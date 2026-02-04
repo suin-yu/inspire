@@ -1,0 +1,315 @@
+.about-profile-section {
+    width: 100%;
+    background-color: #111;
+    /* Dark Theme */
+    color: #fff;
+    position: relative;
+    padding: 100px 0 0 0;
+    /* Removed extra bottom padding, using spacer instead */
+}
+
+.profile-container {
+    display: flex;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 5vw;
+    box-sizing: border-box;
+}
+
+/* Left Side Styling */
+.profile-left {
+    width: 45%;
+    position: relative;
+}
+
+.sticky-content {
+    position: sticky;
+    top: 20vh;
+    /* Stick slightly below the top */
+    display: flex;
+    flex-direction: row;
+    /* Side by side */
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.profile-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 96px;
+    font-weight: 400;
+    letter-spacing: -3px;
+    line-height: 1;
+    margin-bottom: 0;
+    flex-shrink: 0;
+    z-index: -1;
+    /* Text on top */
+    position: relative;
+    left: 20px;
+}
+
+.text-orange {
+    color: #FB6C1C;
+}
+
+.text-gray {
+    color: #444;
+    /* Dark gray */
+}
+
+.profile-img-box {
+    width: 850px;
+    height: auto;
+    /* Overlap slightly */
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: -10%;
+    left: 7.4%;
+    z-index: 1;
+    /* Image behind text */
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Right Side Styling */
+.profile-right {
+    width: 55%;
+    padding-left: 50px;
+    box-sizing: border-box;
+}
+
+/* 오른쪽 리스트 */
+.career-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+}
+
+/* 마지막 엔딩 여백 */
+/* 마지막 엔딩 여백 optimized */
+.career-end-spacer {
+    height: 15vh;
+    width: 100%;
+}
+
+
+
+
+.career-card {
+    background-color: #fff;
+    color: #111;
+    border-radius: 30px;
+    padding: 60px 60px;
+    /* Spacious padding */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    z-index: 6;
+}
+
+.card-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.card-period {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: #111;
+    letter-spacing: -1px;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    margin: 0;
+}
+
+/* The number span inside period */
+.card-period .num {
+    font-size: 100px;
+    font-weight: 800;
+    letter-spacing: -3px;
+    margin-right: 5px;
+    line-height: 1;
+}
+
+.card-header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 5px;
+    text-align: right;
+    flex-shrink: 0;
+    padding-bottom: 8px;
+}
+
+.card-date {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+}
+
+.card-sub {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+}
+
+.card-body {
+    font-family: 'Pretendard', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-body-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111;
+    margin: 0;
+    line-height: 1.4;
+    word-break: keep-all;
+    letter-spacing: -0.8px;
+}
+
+.card-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+.card-details li {
+    font-size: 17px;
+    color: #777;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+}
+
+/* ORANGE CARD STYLES */
+.orange-card {
+    background-color: #FB6C1C;
+    color: #fff;
+}
+
+.orange-header {
+    border-bottom: none;
+    margin-bottom: 0;
+    align-items: center;
+    /* Center align horizontally adjacent items */
+}
+
+.orange-card .card-header-right {
+    padding-bottom: 0;
+    /* Remove padding to ensure true center alignment */
+}
+
+.card-category {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 50px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1;
+}
+
+.orange-right {
+    text-align: right;
+    color: #fff;
+}
+
+.orange-date,
+.orange-sub {
+    color: #fff;
+    font-weight: 500;
+}
+
+.orange-title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -1px;
+    word-break: keep-all;
+    color: #111;
+    margin: 0;
+}
+
+.orange-card .card-body {
+    gap: 10px;
+}
+
+.orange-details li {
+    color: #111;
+}
+
+.orange-title,
+.edu-title {
+    color: #111;
+}
+
+/* Education Blocks */
+.edu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.edu-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edu-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+    letter-spacing: -1px;
+    word-break: keep-all;
+}
+
+@media (max-width: 1200px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile-left,
+    .profile-right {
+        width: 100%;
+        padding: 0;
+    }
+
+    .sticky-content {
+        position: relative;
+        top: 0;
+        margin-bottom: 50px;
+    }
+
+    .profile-title {
+        font-size: 60px;
+    }
+
+    .profile-right {
+        padding-left: 0;
+    }
+}

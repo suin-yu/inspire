@@ -1,0 +1,149 @@
+.about-gallery-section {
+    position: relative;
+    width: 100%;
+    height: 120vh;
+    /* Taller than viewport for spacious feel */
+    background-color: #111;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.name-title {
+    font-family: 'El Messiri', sans-serif;
+    font-size: 250px;
+    font-weight: 600;
+    color: #FB6C1C;
+    z-index: -1;
+    position: relative;
+    text-align: center;
+    line-height: 1;
+    display: flex;
+    gap: 40px;
+    /* Space between SUIN and YU */
+    align-items: center;
+}
+
+.name-part.text-gray {
+    color: #555;
+    /* Dark Gray for YU */
+}
+
+.gallery-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Let clicks pass through if needed */
+}
+
+/* Wrapper handles positioning and the shake/float animation */
+.img-wrapper {
+    position: absolute;
+    animation: floatShake 6s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* Inner Image handles the Mouse move parallax (via CSS var) */
+.gallery-img {
+    width: 250px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 20px;
+    transform: translate(var(--mouse-x, 0px), var(--mouse-y, 0px));
+    transition: transform 0.1s ease-out;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Positioning based on the provided reference image */
+/* Top Left (Above S/U) */
+.pos-1 {
+    top: 22%;
+    left: 24%;
+    animation-delay: 0s;
+    animation-duration: 7s;
+}
+
+/* Top Center (Above I/N) */
+.pos-2 {
+    top: 20%;
+    left: 48%;
+    animation-delay: -1s;
+    animation-duration: 5s;
+}
+
+
+/* Top Right (Above Y/U) */
+.pos-3 {
+    top: 38%;
+    right: 16.4%;
+    animation-delay: -2s;
+    animation-duration: 8s;
+}
+
+/* Left Side (Left of S) 발리*/
+.pos-4 {
+    top: 62.2%;
+    left: 14.4%;
+    animation-delay: -0.5s;
+    animation-duration: 6s;
+}
+
+/* Bottom Center (Below S/U/I) 수영장 뒷모습*/
+.pos-5 {
+    top: 82%;
+    left: 40%;
+    animation-delay: -1.5s;
+    animation-duration: 5.5s;
+}
+
+
+/* Bottom Right (Below Y/U) 선글라스 정면 사진*/
+.pos-6 {
+    top: 79%;
+    right: 24%;
+    animation-delay: -3s;
+    animation-duration: 7s;
+}
+
+@keyframes floatShake {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(5px, -8px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-4px, 5px) rotate(-1deg);
+    }
+
+    75% {
+        transform: translate(6px, 4px) rotate(0.5deg);
+    }
+
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+}
+
+@media (max-width: 1200px) {
+    .name-title {
+        font-size: 150px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .gallery-img {
+        width: 180px;
+        height: 130px;
+    }
+
+    /* Adjust positions for mobile to avoid overlap with big text */
+    /* Implementation simplified for now */
+}

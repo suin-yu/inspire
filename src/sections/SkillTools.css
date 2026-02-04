@@ -1,0 +1,97 @@
+.skill-tools-section {
+    width: 100%;
+    /* min-height: 100vh; */
+    padding: 50px 0;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.tools-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Row gap 80px, Col gap 60px */
+    width: 100%;
+    max-width: 1200px;
+    height: 100vh;
+    align-content: center;
+    gap: 60px 60px;
+}
+
+.tool-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* SVG Circle Styles */
+.circle-svg {
+    transform: rotate(-90deg);
+    /* Start from top */
+    width: 200px;
+    height: 200px;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: transparent;
+    stroke-width: 15;
+}
+
+.circle-progress {
+    fill: none;
+    stroke-width: 15;
+    stroke-linecap: round;
+    stroke-dasharray: 565;
+    /* 2 * PI * 90 */
+    stroke-dashoffset: 565;
+    transition: stroke-dashoffset 3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.active .circle-progress {
+    /* Offset will be set inline via JS */
+}
+
+/* Text in center */
+.tool-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #555;
+    /* Adjust based on image text color, seems standard gray/colored */
+}
+
+.tool-name.colored {
+    /* If we want the text to match the stroke color, we can set it inline */
+}
+
+@media (max-width: 1024px) {
+    .tools-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 60px;
+    }
+}
+
+@media (max-width: 600px) {
+    .tools-container {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 40px;
+    }
+
+    .circle-svg {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Adjust radius/stroke logic for smaller size if needed via viewBox, 
+       but keeping viewBox consistent scales it automatically */
+}

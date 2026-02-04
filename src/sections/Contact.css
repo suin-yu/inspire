@@ -1,0 +1,275 @@
+/* Reusing styling from Skill.css for consistency */
+
+:root {
+    --bg-light: #f4f4f4;
+    --text-black: #111;
+    --text-gray: #d1d1d1;
+    --primary-orange: #FB6C1C;
+}
+
+.contact-section {
+    position: relative;
+    width: 100%;
+    height: 250vh;
+    /* Accommodate scroll animation */
+    background-color: #eaeaea;
+    z-index: 10;
+}
+
+.contact-sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background-color: #eaeaea;
+}
+
+.contact-track {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.contact-section .hero-text-wrap {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', 'Poppins', sans-serif;
+    font-size: 250px;
+    font-weight: 500;
+    gap: 30px;
+    padding-left: 2vw;
+}
+
+.contact-section .text-orange {
+    color: var(--primary-orange, #FB6C1C);
+}
+
+.contact-section .text-white {
+    color: #111;
+}
+
+/* Toggle Pill */
+.contact-section .design-toggle {
+    width: 420px;
+    height: 170px;
+    background-color: #ccc;
+    border-radius: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-section .toggle-circle {
+    width: 170px;
+    height: 170px;
+    background-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-section .asterisk {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 150px;
+    font-weight: 800;
+    color: var(--primary-orange, #FB6C1C);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 0.5;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 1200px) {
+    .contact-section .hero-text-wrap {
+        font-size: 120px;
+        gap: 20px;
+    }
+
+    .contact-section .design-toggle {
+        width: 200px;
+        height: 100px;
+    }
+
+    .contact-section .toggle-circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .contact-section .asterisk {
+        font-size: 70px;
+    }
+}
+
+/* Details Section */
+.contact-details {
+    position: relative;
+    background-color: #eaeaea;
+    padding: 10rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    z-index: 20;
+}
+
+.contact-video {
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.contact-info {
+    text-align: center;
+}
+
+.contact-info p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #111;
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .contact-video {
+        width: 90%;
+    }
+
+    .contact-info p {
+        font-size: 20px;
+    }
+}
+
+/* Footer Section */
+.footer-section {
+    width: 100%;
+    height: 100vh;
+    background-color: #111;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 4vw;
+    /* Align with the 'E' of INSPIRE */
+}
+
+.footer-content {
+    position: relative;
+    z-index: 10;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 30vh;
+    margin-right: 10.5rem;
+    /* Adjust vertical position */
+}
+
+.footer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-menu li {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    text-align: right;
+    line-height: 1.2;
+}
+
+.footer-menu li:hover {
+    color: #FB6C1C;
+}
+
+.copyright {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #888;
+    margin-top: 1.5rem;
+    font-weight: 300;
+}
+
+.footer-bg-logo {
+    position: absolute;
+    /* 1. 하단 여백 완전 제거: El Messiri 폰트 특성상 더 과감한 음수값이 필요합니다 */
+    bottom: -3.1vw;
+
+    /* 2. 가로 정중앙: width: 100% 대신 이 방식을 써야 '글자 중심'이 맞습니다 */
+    left: 47%;
+    transform: translateX(-50%);
+
+    /* 3. 텍스트 레이아웃 최적화 */
+    white-space: nowrap;
+    display: block;
+    line-height: 0.7;
+    /* 텍스트 상하 박스 축소 */
+
+    /* 기존 스타일 유지 및 보정 */
+    font-family: 'El Messiri', sans-serif;
+    font-size: 28vw;
+    font-weight: 400;
+    color: #252525;
+    opacity: 1;
+    z-index: 0;
+    /* 배경이므로 0 권장, 필요시 1 */
+    pointer-events: none;
+    letter-spacing: -0.08em;
+}
+
+@media (max-width: 768px) {
+    .footer-section {
+        padding-right: 5vw;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-content {
+        margin-bottom: 0;
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-menu li {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .footer-bg-logo {
+        font-size: 28vw;
+        opacity: 0.5;
+        margin-bottom: -100px;
+        margin: 0 auto;
+    }
+}

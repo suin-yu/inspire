@@ -1,0 +1,129 @@
+:root {
+    --bg-light: #f4f4f4;
+    --text-black: #000000;
+    --text-gray: #d1d1d1;
+}
+
+/* Dark Theme Override for About Section */
+.about-section {
+    position: relative;
+    width: 100%;
+    height: 250vh;
+    background-color: #111111;
+    /* Dark BG */
+    z-index: 10;
+}
+
+.about-sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background-color: #111111;
+}
+
+.about-track {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.hero-text-wrap {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', 'Poppins', sans-serif;
+    font-size: 250px;
+    /* Scaled for Hero impact */
+    font-weight: 500;
+    gap: 30px;
+    padding-left: 2vw;
+}
+
+.text-black {
+    color: #FB6C1C;
+    /* Orange for "About" */
+}
+
+.text-gray {
+    color: #ffffff;
+    /* White for "Mind..." */
+}
+
+/* Toggle Pill */
+.design-toggle {
+    width: 420px;
+    /* Will be overridden by JS */
+    height: 170px;
+    background-color: #333333;
+    /* Dark Gray Capsule */
+    border-radius: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Circle on right */
+    position: relative;
+    overflow: hidden;
+    /* No transitions, controlled by JS */
+}
+
+/* Circle / Symbol Container */
+.toggle-circle {
+    width: 170px;
+    height: 170px;
+    background-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Hash Symbol Styling & Animation */
+.asterisk {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 150px;
+    font-weight: 800;
+    color: #FB6C1C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 0.5;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+@media (max-width: 1200px) {
+    .hero-text-wrap {
+        font-size: 120px;
+        gap: 30px;
+    }
+
+    .design-toggle {
+        width: 200px;
+        height: 100px;
+    }
+
+    .toggle-circle {
+        width: 80px;
+        height: 80px;
+    }
+}

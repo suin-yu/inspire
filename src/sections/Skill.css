@@ -1,0 +1,124 @@
+:root {
+    --bg-light: #f4f4f4;
+    --text-black: #111;
+    --text-gray: #d1d1d1;
+}
+
+/* Dark Theme Override for Skill Section */
+.skill-section {
+    position: relative;
+    width: 100%;
+    height: 250vh;
+    background-color: #eaeaea;
+    /* Dark BG */
+    z-index: 10;
+}
+
+.skill-sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background-color: #eaeaea;
+}
+
+.skill-track {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+/* Inherit hero-text-wrap from global or redefine if needed. 
+   About.css defined `.hero-text-wrap` globally? No, it's in About.css.
+   If About.css is imported in App (via About.jsx), and classes are not scoped, they might leak.
+   However, it's safer to duplicate/scope.
+*/
+
+.skill-section .hero-text-wrap {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', 'Poppins', sans-serif;
+    font-size: 250px;
+    font-weight: 500;
+    gap: 30px;
+    padding-left: 2vw;
+}
+
+.skill-section .text-orange {
+    color: #FB6C1C;
+}
+
+.skill-section .text-white {
+    color: #111;
+}
+
+/* Toggle Pill - Reused classes but scoped to skill-section to ensure styles apply */
+.skill-section .design-toggle {
+    width: 420px;
+    height: 170px;
+    background-color: #ccc;
+    border-radius: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-section .toggle-circle {
+    width: 170px;
+    height: 170px;
+    background-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.skill-section .asterisk {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 150px;
+    font-weight: 800;
+    color: #FB6C1C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 0.5;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 1200px) {
+    .skill-section .hero-text-wrap {
+        font-size: 120px;
+        gap: 30px;
+    }
+
+    .skill-section .design-toggle {
+        width: 200px;
+        height: 100px;
+    }
+
+    .skill-section .toggle-circle {
+        width: 80px;
+        height: 80px;
+    }
+}
