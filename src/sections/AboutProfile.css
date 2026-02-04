@@ -199,10 +199,10 @@
 
 .card-details li {
     font-size: 17px;
-    color: #777;
+    color: #aaa;
     margin-bottom: 6px;
     line-height: 1.2;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: -0.5px;
 }
 
@@ -258,7 +258,8 @@
 }
 
 .orange-details li {
-    color: #111;
+    color: #333;
+    font-weight: 300;
 }
 
 .orange-title,
