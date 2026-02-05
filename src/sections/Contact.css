@@ -233,12 +233,12 @@
     /* 3. 텍스트 레이아웃 최적화 */
     white-space: nowrap;
     display: block;
-    line-height: 0.7;
+    line-height: 0.83;
     /* 텍스트 상하 박스 축소 */
 
     /* 기존 스타일 유지 및 보정 */
-    font-family: 'El Messiri', sans-serif;
-    font-size: 28vw;
+    font-family: 'Athene Voyage', serif;
+    font-size: 26vw;
     font-weight: 400;
     color: #252525;
     opacity: 1;
@@ -269,7 +269,7 @@
     .footer-bg-logo {
         font-size: 28vw;
         opacity: 0.5;
-        margin-bottom: -100px;
+        margin-bottom: -80px;
         margin: 0 auto;
     }
 }
