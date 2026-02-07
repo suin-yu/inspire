@@ -160,15 +160,19 @@
     margin: 0;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
+    letter-spacing: -8px;
+
 }
 
 .work-gallery-title-right {
     color: #555;
     transform: translateX(100vw);
     transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-    margin: 0;
+    margin: 40px 0;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
+    font-size: 6rem;
+    letter-spacing: -5x;
 }
 
 .work-gallery-header.animate .work-gallery-title-left,
