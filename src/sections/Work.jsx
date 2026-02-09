@@ -51,10 +51,11 @@ const WorkGalleryHeader = ({ leftText = "UXUI", rightText = "Design", marginTop,
     );
 };
 
-const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBottom, overlay, noButtons, layout, overlayPosition, rightText, align, link, uxLink, siteLink }) => {
+const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBottom, overlay, noButtons, layout, overlayPosition, rightText, align, link, uxLink, siteLink, conceptLink, conceptText }) => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [isConceptOpen, setIsConceptOpen] = useState(false);
 
     // Handle multiple images
     const slides = images || (image ? [image] : []);
@@ -81,6 +82,11 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
 
     const ImageWrapper = link ? 'a' : 'div';
     const wrapperProps = link ? { href: link, className: 'work-gallery-image-wrapper' } : { className: 'work-gallery-image-wrapper' };
+
+    const toggleConcept = (e) => {
+        e.preventDefault(); // Prevent navigation if it's an anchor (though we'll use button/div)
+        setIsConceptOpen(!isConceptOpen);
+    };
 
     return (
         <div
@@ -111,9 +117,32 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
                         />
                     ))
                 )}
+
+                {/* Regular Overlay */}
                 {overlay && (
                     <div className={`work-image-overlay ${overlayPosition === 'left' ? 'overlay-left' : ''} ${currentSlide !== 0 ? 'overlay-hidden' : ''}`}>
                         {overlay}
+                    </div>
+                )}
+
+                {/* Project Concept Overlay */}
+                {conceptText && (
+                    <div className={`work-concept-overlay ${isConceptOpen ? 'open' : ''}`}>
+                        <button className="work-concept-close" onClick={() => setIsConceptOpen(false)} aria-label="Close">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </button>
+                        <div className="work-concept-content">
+                            <p className="work-concept-desc">
+                                {conceptText.split('\n').map((line, i) => (
+                                    <React.Fragment key={i}>
+                                        {line}
+                                        <br />
+                                    </React.Fragment>
+                                ))}
+                            </p>
+                        </div>
                     </div>
                 )}
             </ImageWrapper>
@@ -128,6 +157,27 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
                         {rightText && <span className="work-year-text">{rightText}</span>}
                         {!noButtons && (
                             <>
+                                {conceptText ? (
+                                    <button
+                                        className="work-btn"
+                                        onClick={toggleConcept}
+                                        style={{ backgroundColor: '#fff', color: '#111', cursor: 'pointer' }}
+                                    >
+                                        {isConceptOpen ? 'Close' : 'Project Concept'}
+                                    </button>
+                                ) : (
+                                    conceptLink && (
+                                        <a
+                                            href={conceptLink}
+                                            className="work-btn"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{ backgroundColor: '#fff', color: '#111' }}
+                                        >
+                                            Project Concept
+                                        </a>
+                                    )
+                                )}
                                 <a href={uxLink || '#'} className="work-btn" target={uxLink ? "_blank" : "_self"} rel="noopener noreferrer">UX view</a>
                                 <a href={siteLink || '#'} className="work-btn" target={siteLink ? "_blank" : "_self"} rel="noopener noreferrer">Site view</a>
                             </>
@@ -248,18 +298,30 @@ const Work = () => {
                     <WorkGalleryItem
                         video={paparecipeVideo}
                         title="PapaRecipe"
-                        sub="2026 EZEN Academy Team Project"
+                        sub="2026 EZEN Academy Team Project | Team Leader"
                         uxLink="https://www.figma.com/design/1770h8SO1bWlGHzLjKFqFJ/%EC%9C%A0%EC%88%98%EC%9D%B8-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4?node-id=1-2594&t=qBve6p0Epz02VnwW-1"
                         siteLink="https://suin-yu.github.io/paparecipe/"
+                        conceptText={`자연주의 스킨케어 브랜드 Papa Recipe를 현대적으로 재해석한 디자인 중심의 웹 프로젝트로, 팀 리더로서 전체 방향성과 완성도를 총괄했습니다.
+브랜드 철학을 시각적으로 일관되게 전달하기 위해 디자인 기준을 정립하고 팀의 작업 방향을 조율했습니다.
+비주얼 콘텐츠는 Midjourney AI를 활용해 제작했으며, 결과물의 톤을 맞추는 과정에서 반복적인 수정과 선별 작업이 가장 큰 도전이었습니다.
+Gemini를 활용해 영상 흐름과 장면 구성을 기획하며, 추상적인 아이디어를 팀원들과 공유 가능한 구조로 구체화했습니다.
+AI 기반 결과물과 실제 웹 구현 사이의 간극을 줄이기 위해 디자인과 개발 관점에서 지속적인 커뮤니케이션을 진행했습니다.
+본 프로젝트는 반응형 웹 환경 속에서 협업, 문제 해결, 그리고 AI 기반 디자인 리딩 경험을 담은 브랜드 포트폴리오입니다.`}
                     />
 
                     <WorkGalleryItem
                         image={workImg2}
                         title="Force1 APP"
-                        sub="2026 EZEN Academy Team Project"
+                        sub="2026 EZEN Academy Team Project | Team Leader"
                         marginTop="8rem"
                         uxLink="https://www.figma.com/design/1770h8SO1bWlGHzLjKFqFJ/%EC%9C%A0%EC%88%98%EC%9D%B8-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4?node-id=1-3&t=qBve6p0Epz02VnwW-1"
                         siteLink="https://force1-five.vercel.app/"
+                        conceptText={`Force1은 경기 정보와 커뮤니티를 통합해 접근성을 극대화한 F1 국내 팬 전용 플랫폼입니다.
+저는 본 프로젝트의 리더로서 기능 우선순위 설정부터 디자인 시스템 구축까지 전 과정을 리딩하며 협업의 기틀을 마련했습니다.
+프로젝트 진행 중 가장 큰 도전 과제였던 '데이터 가독성 확보'를 위해 기술 스택과 UX 구조 사이의 균형점을 끊임없이 조율했으며,
+구성원 간의 긴밀한 논의를 통해 프로젝트의 방향성을 일관되게 유지했습니다.
+이를 통해 복잡한 데이터를 직관적인 사용자 경험으로 전환하는 설계 역량을 발휘했으며,
+팀의 시너지를 극대화하여 완성도 높은 반응형 서비스를 구현했습니다.`}
                     />
 
                     <WorkGalleryItem

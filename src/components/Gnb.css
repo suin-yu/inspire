@@ -23,6 +23,10 @@
     color: #111;
 }
 
+.gnb.gray .gnb-menu li {
+    font-weight: 400;
+}
+
 .gnb.orange {
     color: #fff;
 }
