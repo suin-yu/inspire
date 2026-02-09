@@ -525,6 +525,7 @@
     z-index: 20;
     border-radius: 24px;
     backdrop-filter: blur(5px);
+    border: 1px solid rgba(234, 234, 234, 0.5);
 }
 
 .work-concept-overlay.open {
@@ -548,9 +549,9 @@
 
 .work-concept-desc {
     font-family: 'Pretendard', sans-serif;
-    font-size: 1.25rem;
-    line-height: 1.8;
-    color: #fff;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    color: #ccc;
     text-align: center;
     font-weight: 200;
     white-space: pre-line;

@@ -97,7 +97,7 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
                 marginBottom: marginBottom ? marginBottom : 0
             }}
         >
-            <ImageWrapper {...wrapperProps}>
+            <ImageWrapper {...wrapperProps} onMouseEnter={() => conceptText && setIsConceptOpen(true)}>
                 {video ? (
                     <video
                         src={video}
@@ -134,14 +134,20 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
                             </svg>
                         </button>
                         <div className="work-concept-content">
-                            <p className="work-concept-desc">
-                                {conceptText.split('\n').map((line, i) => (
-                                    <React.Fragment key={i}>
-                                        {line}
-                                        <br />
-                                    </React.Fragment>
-                                ))}
-                            </p>
+                            {typeof conceptText === 'string' ? (
+                                <p className="work-concept-desc">
+                                    {conceptText.split('\n').map((line, i) => (
+                                        <React.Fragment key={i}>
+                                            {line}
+                                            <br />
+                                        </React.Fragment>
+                                    ))}
+                                </p>
+                            ) : (
+                                <div className="work-concept-desc" style={{ textAlign: 'left', margin: '0 auto', maxWidth: '1100px' }}>
+                                    {conceptText}
+                                </div>
+                            )}
                         </div>
                     </div>
                 )}
@@ -301,12 +307,63 @@ const Work = () => {
                         sub="2026 EZEN Academy Team Project | Team Leader"
                         uxLink="https://www.figma.com/design/1770h8SO1bWlGHzLjKFqFJ/%EC%9C%A0%EC%88%98%EC%9D%B8-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4?node-id=1-2594&t=qBve6p0Epz02VnwW-1"
                         siteLink="https://suin-yu.github.io/paparecipe/"
-                        conceptText={`자연주의 스킨케어 브랜드 Papa Recipe를 현대적으로 재해석한 디자인 중심의 웹 프로젝트로, 팀 리더로서 전체 방향성과 완성도를 총괄했습니다.
-브랜드 철학을 시각적으로 일관되게 전달하기 위해 디자인 기준을 정립하고 팀의 작업 방향을 조율했습니다.
-비주얼 콘텐츠는 Midjourney AI를 활용해 제작했으며, 결과물의 톤을 맞추는 과정에서 반복적인 수정과 선별 작업이 가장 큰 도전이었습니다.
-Gemini를 활용해 영상 흐름과 장면 구성을 기획하며, 추상적인 아이디어를 팀원들과 공유 가능한 구조로 구체화했습니다.
-AI 기반 결과물과 실제 웹 구현 사이의 간극을 줄이기 위해 디자인과 개발 관점에서 지속적인 커뮤니케이션을 진행했습니다.
-본 프로젝트는 반응형 웹 환경 속에서 협업, 문제 해결, 그리고 AI 기반 디자인 리딩 경험을 담은 브랜드 포트폴리오입니다.`}
+                        conceptText={
+                            <div style={{ display: 'flex', gap: '1rem', textAlign: 'left', color: '#ccc', width: '100%', fontSize: '1rem' }}>
+                                <div style={{ flex: '0 0 20%', borderRight: '1px solid rgba(255, 255, 255, 0.3)', paddingRight: '1rem', display: 'flex', alignItems: 'baseline' }}>
+                                    <h3 style={{ fontSize: '2.2rem', fontWeight: '600', color: '#fff', lineHeight: '1.3', margin: 0 }}>
+                                        Papa Recipe Renewal <span style={{ display: 'block', fontSize: '1.05rem', fontWeight: '400', marginTop: '0.5rem', color: '#aaa' }}>자연주의 철학과 AI 기술을 융합한 반응형 프로젝트</span>
+                                    </h3>
+                                </div>
+
+                                <div style={{ flex: '1', paddingLeft: '0.5rem' }}>
+                                    <p style={{ lineHeight: '1' }}>
+                                        본 프로젝트는 파파레서피의 자연주의 브랜드 철학을 현대적인 감각으로 재해석한 디자인 중심의 웹 리뉴얼 작업입니다.
+                                    </p>
+                                    <p style={{ marginBottom: '1.5rem', lineHeight: '1' }}>
+                                        팀 리더로서 프로젝트 전반을 총괄하며, 브랜드 정체성의 일관성 확립과 반응형 웹 환경에 최적화된 구현을 핵심 목표로 설정했습니다.
+                                    </p>
+
+                                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', columnGap: '1.5rem', rowGap: '1rem' }}>
+                                        <div>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Design Leadership</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                브랜드 철학을 반영한 디자인 시스템을 정의하고, 팀의 시각적 결과물이 일관된 톤앤매너로 완성되도록 방향성과 기준을 주도했습니다.
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· AI Visual Directing</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                Midjourney AI를 활용한 비주얼 제작을 리드하며, 프롬프트 전략 수립부터 결과물 선별까지 전 과정을 관리했습니다.
+                                                <br />
+                                                반복적인 실험과 정제 과정을 통해 브랜드에 적합한 고퀄리티 비주얼 톤을 완성했습니다.
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Creative Planning</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                Gemini를 활용해 추상적인 영상 흐름을 구조화하고, 팀원들이 즉시 활용할 수 있는 기획안으로 구체화했습니다.
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Bridge Role</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                AI 비주얼과 웹 구현 간의 간극을 줄이기 위해 디자인·개발 간 커뮤니케이션을 주도했습니다.
+                                            </p>
+                                        </div>
+
+                                        <div style={{ gridColumn: '1 / -1' }}>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Core Value</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                본 프로젝트는 AI 기반 디자인 프로세스로 반응형 웹 완성도와 팀 협업 효율을 함께 높인 프로젝트입니다.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                     />
 
                     <WorkGalleryItem
@@ -316,12 +373,61 @@ AI 기반 결과물과 실제 웹 구현 사이의 간극을 줄이기 위해 �
                         marginTop="8rem"
                         uxLink="https://www.figma.com/design/1770h8SO1bWlGHzLjKFqFJ/%EC%9C%A0%EC%88%98%EC%9D%B8-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4?node-id=1-3&t=qBve6p0Epz02VnwW-1"
                         siteLink="https://force1-five.vercel.app/"
-                        conceptText={`Force1은 경기 정보와 커뮤니티를 통합해 접근성을 극대화한 F1 국내 팬 전용 플랫폼입니다.
-저는 본 프로젝트의 리더로서 기능 우선순위 설정부터 디자인 시스템 구축까지 전 과정을 리딩하며 협업의 기틀을 마련했습니다.
-프로젝트 진행 중 가장 큰 도전 과제였던 '데이터 가독성 확보'를 위해 기술 스택과 UX 구조 사이의 균형점을 끊임없이 조율했으며,
-구성원 간의 긴밀한 논의를 통해 프로젝트의 방향성을 일관되게 유지했습니다.
-이를 통해 복잡한 데이터를 직관적인 사용자 경험으로 전환하는 설계 역량을 발휘했으며,
-팀의 시너지를 극대화하여 완성도 높은 반응형 서비스를 구현했습니다.`}
+                        conceptText={
+                            <div style={{ display: 'flex', gap: '1rem', textAlign: 'left', color: '#ccc', width: '100%', fontSize: '1rem' }}>
+                                <div style={{ flex: '0 0 20%', borderRight: '1px solid rgba(255, 255, 255, 0.3)', paddingRight: '1rem', display: 'flex', alignItems: 'baseline' }}>
+                                    <h3 style={{ fontSize: '1.75rem', fontWeight: '600', color: '#fff', lineHeight: '1.3', margin: 0 }}>
+                                        Force1 APP <span style={{ display: 'block', fontSize: '1.05rem', fontWeight: '400', marginTop: '0.5rem', color: '#aaa' }}>국내 F1 팬덤을 위한<br />정보·커뮤니티 중심<br />반응형 프로젝트</span>
+                                    </h3>
+                                </div>
+
+                                <div style={{ flex: '1', paddingLeft: '0.5rem' }}>
+                                    <p style={{ marginBottom: '0.1rem', lineHeight: '1.3' }}>
+                                        본 프로젝트는 국내 Formula 1 팬들을 위한 팬덤 플랫폼으로, 경기 정보와 커뮤니티 경험을 하나의 흐름으로 연결한 APP 프로젝트입니다.
+                                    </p>
+                                    <p style={{ marginBottom: '1.5rem', lineHeight: '1.3' }}>
+                                        팀 리더로서 기획부터 UX/UI 구조 설계까지 프로젝트 전반을 총괄하며, 명확한 정보 전달과 사용자 몰입도를 핵심 가치로 설계했습니다.
+                                    </p>
+
+                                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', columnGap: '1.5rem', rowGap: '1rem' }}>
+                                        <div>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Design Leadership</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                F1 팬덤의 성격을 반영한 시각적 톤과 레이아웃 기준을 수립하고, 정보 밀도가 높은 콘텐츠를 효과적으로 전달할 수 있도록 디자인 방향을 주도했습니다.
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Service Planning</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                경기 일정, 드라이버 정보, 결과 데이터 등 주요 콘텐츠의 구조를 정의하고, 사용자가 빠르게 탐색할 수 있는 사용자 흐름을 설계했습니다.
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· UX Problem Solving</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                정보량이 많은 환경에서 가독성과 사용성을 동시에 확보하는 것이 가장 큰 과제였으며, 반복적인 화면 개선과 사용자 흐름 조정을 통해 이를 해결했습니다.
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Bridge Role</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                기획, 디자인, 개발 간의 요구사항을 조율하며 기능 구현 과정에서 발생한 이슈를 정리하고 해결 방향을 제시했습니다.
+                                            </p>
+                                        </div>
+
+                                        <div style={{ gridColumn: '1 / -1' }}>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Core Value</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                본 프로젝트는 팬 경험 중심의 UX 설계와 팀 리딩을 통해 반응형 환경에서도 완성도 높은 팬덤 서비스를 구현한 사례입니다.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                     />
 
                     <WorkGalleryItem
