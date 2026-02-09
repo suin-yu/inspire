@@ -56,7 +56,13 @@ const Home = () => {
         };
 
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        // Ensure body allows scroll (reset from potential overrides)
+        document.body.style.overflowX = 'hidden';
+        document.body.style.overflowY = 'auto';
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
     }, []);
 
     // Color Interpolation
@@ -120,7 +126,7 @@ const Home = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setActiveIndex((prev) => (prev + 1) % workCards.length);
-        }, 3000); // Rotate every 3 seconds
+        }, 1300); // Rotate every 1.3 seconds
 
         return () => clearInterval(interval);
     }, [workCards.length]);
