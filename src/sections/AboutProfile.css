@@ -146,6 +146,8 @@
     letter-spacing: -3px;
     margin-right: 5px;
     line-height: 1;
+    position: relative;
+    top: 4px;
 }
 
 .card-header-right {
@@ -199,7 +201,7 @@
 
 .card-details li {
     font-size: 17px;
-    color: #aaa;
+    color: #888;
     margin-bottom: 6px;
     line-height: 1.2;
     font-weight: 300;
