@@ -382,7 +382,7 @@ const Work = () => {
                                 </div>
 
                                 <div style={{ flex: '1', paddingLeft: '0.5rem' }}>
-                                    <p style={{ lineHeight: '1' }}>
+                                    <p style={{ lineHeight: '1', marginBottom: '-0.5rem' }}>
                                         본 프로젝트는 파파레서피의 자연주의 브랜드 철학을 현대적인 감각으로 재해석한 디자인 중심의 웹 리뉴얼 작업입니다.
                                     </p>
                                     <p style={{ marginBottom: '1.5rem', lineHeight: '1' }}>
@@ -448,7 +448,7 @@ const Work = () => {
                                 </div>
 
                                 <div style={{ flex: '1', paddingLeft: '0.5rem' }}>
-                                    <p style={{ marginBottom: '0.1rem', lineHeight: '1.3' }}>
+                                    <p style={{ marginBottom: '-0.8rem', lineHeight: '1.3' }}>
                                         본 프로젝트는 국내 Formula 1 팬들을 위한 팬덤 플랫폼으로, 경기 정보와 커뮤니티 경험을 하나의 흐름으로 연결한 APP 프로젝트입니다.
                                     </p>
                                     <p style={{ marginBottom: '1.5rem', lineHeight: '1.3' }}>
