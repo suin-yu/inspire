@@ -449,8 +449,8 @@
 
 /* SNS Marquee */
 .sns-marquee-container {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 120vw;
+    margin-left: calc(-60vw + 50%);
     overflow: hidden;
     padding: 6rem 0;
     transform: rotate(-5deg) scale(1.1);
@@ -463,8 +463,9 @@
 .sns-marquee-track {
     display: flex;
     gap: 40px;
+    padding-right: 40px;
     width: max-content;
-    animation: marquee 20s linear infinite;
+    animation: marquee 10s linear infinite;
 }
 
 .sns-marquee-track img {
@@ -487,7 +488,7 @@
     }
 
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-25%);
     }
 }
 

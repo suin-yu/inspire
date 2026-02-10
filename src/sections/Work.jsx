@@ -26,7 +26,7 @@ import paparecipeVideo from '../assets/video/paparecipe.mp4';
 import readMoreArrow from '../assets/img/readMore2.png';
 
 
-const WorkGalleryHeader = ({ leftText = "UXUI", rightText = "Design", marginTop, isClone }) => {
+const WorkGalleryHeader = ({ leftText = "UXUI", rightText = "Design", marginTop, marginBottom, isClone }) => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
 
@@ -45,7 +45,7 @@ const WorkGalleryHeader = ({ leftText = "UXUI", rightText = "Design", marginTop,
         <div
             className={`work-gallery-header ${isVisible ? 'animate' : ''} ${isClone ? 'clone-header' : ''}`}
             ref={ref}
-            style={{ marginTop: marginTop || 0 }}
+            style={{ marginTop: marginTop || 0, marginBottom: marginBottom !== undefined ? marginBottom : '' }}
         >
             <h2 className="work-gallery-title-left">{leftText}</h2>
             <h2 className="work-gallery-title-right">{rightText}</h2>
@@ -345,7 +345,7 @@ const Work = () => {
                 <div className="work-main-sticky">
                     <div
                         className="work-main-track"
-                        style={{ transform: `translateX(calc(10vw - ${progress * 86}vw))` }}
+                        style={{ transform: `translateX(calc(10vw - ${progress * 83}vw))` }}
                     >
                         <div className="work-hero-text-wrap">
                             <span className="work-text-primary">Work</span>
@@ -574,7 +574,7 @@ const Work = () => {
                     <WorkGalleryItem
                         image={cloneImg1}
                         title="Musign"
-                        marginTop="1rem"
+                        marginTop="0.1rem"
                         align="left"
                         noButtons={true}
                         rightText="2026"
@@ -631,6 +631,7 @@ const Work = () => {
                         leftText="SNS"
                         rightText="Contents"
                         marginTop="8rem"
+                        marginBottom="2rem"
                     />
 
                     <div className="sns-marquee-container">
@@ -642,7 +643,23 @@ const Work = () => {
                             <img src={snsImg5} alt="SNS Contents" />
                             <img src={snsImg6} alt="SNS Contents" />
 
-                            {/* Duplicate for infinite loop */}
+                            {/* Set 2 */}
+                            <img src={snsImg1} alt="SNS Contents" />
+                            <img src={snsImg2} alt="SNS Contents" />
+                            <img src={snsImg3} alt="SNS Contents" />
+                            <img src={snsImg4} alt="SNS Contents" />
+                            <img src={snsImg5} alt="SNS Contents" />
+                            <img src={snsImg6} alt="SNS Contents" />
+
+                            {/* Set 3 */}
+                            <img src={snsImg1} alt="SNS Contents" />
+                            <img src={snsImg2} alt="SNS Contents" />
+                            <img src={snsImg3} alt="SNS Contents" />
+                            <img src={snsImg4} alt="SNS Contents" />
+                            <img src={snsImg5} alt="SNS Contents" />
+                            <img src={snsImg6} alt="SNS Contents" />
+
+                            {/* Set 4 */}
                             <img src={snsImg1} alt="SNS Contents" />
                             <img src={snsImg2} alt="SNS Contents" />
                             <img src={snsImg3} alt="SNS Contents" />

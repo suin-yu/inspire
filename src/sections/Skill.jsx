@@ -80,7 +80,7 @@ const Skill = () => {
             <div className="skill-sticky">
                 <div
                     className="skill-track"
-                    style={{ transform: `translateX(calc(10vw - ${progress * 80}vw))` }}
+                    style={{ transform: `translateX(calc(10vw - ${progress * 72}vw))` }}
                 >
                     <div className="hero-text-wrap">
                         <span className="text-orange">Skill</span>

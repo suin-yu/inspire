@@ -60,7 +60,8 @@
 .text-gray {
     color: #ffffff;
     /* White for "Mind..." */
-    line-height: 1;
+    line-height: 1.3;
+    padding-bottom: 10px;
     white-space: nowrap;
 }
 

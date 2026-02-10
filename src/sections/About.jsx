@@ -83,7 +83,7 @@ const About = () => {
             <div className="about-sticky">
                 <div
                     className="about-track"
-                    style={{ transform: `translateX(calc(10vw - ${progress * 100}vw))` }}
+                    style={{ transform: `translateX(calc(10vw - ${progress * 83}vw))` }}
                 >
                     <div className="hero-text-wrap">
                         <span className="text-black">About</span>
@@ -99,7 +99,7 @@ const About = () => {
                             className="text-gray"
                             style={getTextStyle()}
                         >
-                            Mind behind vision
+                            Crafting Identity
                         </span>
                     </div>
                 </div>
