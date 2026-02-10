@@ -236,7 +236,7 @@
 .work-image-overlay {
     grid-area: 1 / 1;
     /* Overlay on top of image stack */
-    z-index: 10;
+    z-index: 30;
     position: absolute;
     top: 50%;
     right: 5%;
@@ -251,6 +251,10 @@
     opacity: 0;
     transition: opacity 1s ease 1s;
     /* Delay slightly to appear after image scale */
+}
+
+.work-image-overlay.promotion-overlay {
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .work-image-overlay.overlay-left {
@@ -289,6 +293,12 @@
     opacity: 0 !important;
     transition: opacity 0.5s ease;
     transition-delay: 0s;
+}
+
+.work-image-overlay.promo-hidden {
+    opacity: 0 !important;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 }
 
 .work-overlay-text {

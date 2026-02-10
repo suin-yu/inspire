@@ -175,7 +175,7 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
 
                 {/* Regular Overlay */}
                 {overlay && (
-                    <div className={`work-image-overlay ${overlayPosition === 'left' ? 'overlay-left' : ''} ${currentSlide !== 0 ? 'overlay-hidden' : ''}`}>
+                    <div className={`work-image-overlay ${overlayPosition === 'left' ? 'overlay-left' : ''} ${currentSlide !== 0 ? 'overlay-hidden' : ''} ${isPromotion && !isHoverOpen ? 'promo-hidden' : ''} ${isPromotion ? 'promotion-overlay' : ''}`}>
                         {overlay}
                     </div>
                 )}
@@ -394,16 +394,14 @@ const Work = () => {
                                         <div>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Design Leadership</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                브랜드 철학을 반영한 디자인 시스템을 정의하고, 팀의 시각적 결과물이 일관된 톤앤매너로 완성되도록 방향성과 기준을 주도했습니다.
+                                                브랜드 철학 기반의 디자인 시스템을 정립하고, 일관된 톤앤매너 유지를 위한 시각적 가이드라인과 디자인 방향성을 주도했습니다.
                                             </p>
                                         </div>
 
                                         <div>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· AI Visual Directing</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                Midjourney AI를 활용한 비주얼 제작을 리드하며, 프롬프트 전략 수립부터 결과물 선별까지 전 과정을 관리했습니다.
-                                                <br />
-                                                반복적인 실험과 정제 과정을 통해 브랜드에 적합한 고퀄리티 비주얼 톤을 완성했습니다.
+                                                Midjourney AI 프롬프트 전략과 고도화된 큐레이션으로 브랜드 컨셉에 최적화된 하이엔드 비주얼을 구현했습니다.
                                             </p>
                                         </div>
 
@@ -460,21 +458,21 @@ const Work = () => {
                                         <div>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Design Leadership</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                F1 팬덤의 성격을 반영한 시각적 톤과 레이아웃 기준을 수립하고, 정보 밀도가 높은 콘텐츠를 효과적으로 전달할 수 있도록 디자인 방향을 주도했습니다.
+                                                팬덤 감성을 반영한 디자인 가이드를 수립하고, 방대한 데이터의 시각적 전달 효율을 극대화했습니다.
                                             </p>
                                         </div>
 
                                         <div>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Service Planning</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                경기 일정, 드라이버 정보, 결과 데이터 등 주요 콘텐츠의 구조를 정의하고, 사용자가 빠르게 탐색할 수 있는 사용자 흐름을 설계했습니다.
+                                                복잡한 경기 데이터의 구조를 체계화하고, 탐색 효율을 극대화한 사용자 중심의 인터랙션 흐름을 설계했습니다.
                                             </p>
                                         </div>
 
                                         <div>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· UX Problem Solving</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                정보량이 많은 환경에서 가독성과 사용성을 동시에 확보하는 것이 가장 큰 과제였으며, 반복적인 화면 개선과 사용자 흐름 조정을 통해 이를 해결했습니다.
+                                                고밀도 정보 환경에서 가독성과 사용성을 확보하기 위해, 지속적인 인터렉션 개선과 플로우 최적화로 사용자 경험을 고도화했습니다.
                                             </p>
                                         </div>
 
@@ -548,7 +546,7 @@ const Work = () => {
                                         <div style={{ gridColumn: '1 / -1' }}>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Core Value</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                복잡함을 단순함으로 바꾸는 UX 설계를 통해 전문 지식의 문턱을 낮추고, 실질적인 문제 해결을 주도하는 플랫폼 디자이너로서의 전문성을 입증하고자 했습니다.
+                                                복잡한 전문 지식을 직관적인 UX로 단순화하여, 플랫폼 디자이너로서의 문제 해결 능력을 입증했습니다.
                                             </p>
                                         </div>
                                     </div>
@@ -558,8 +556,8 @@ const Work = () => {
                     />
 
                     <WorkGalleryItem
-                        image={workImg3}
-                        hoverImage={workImg3_1}
+                        image={workImg3_1}
+                        hoverImage={workImg3}
                         title="Promotion"
                         sub="2024 Kyowon Tour"
                         marginTop="8rem"
@@ -579,8 +577,8 @@ const Work = () => {
                     />
 
                     <WorkGalleryItem
-                        image={workImg4}
-                        hoverImage={workImg4_1}
+                        image={workImg4_1}
+                        hoverImage={workImg4}
                         title="Promotion"
                         sub="2024 Kyowon Tour"
                         marginTop="8rem"
@@ -605,8 +603,8 @@ const Work = () => {
                     />
 
                     <WorkGalleryItem
-                        image={workImg5}
-                        hoverImage={workImg5_1}
+                        image={workImg5_1}
+                        hoverImage={workImg5}
                         title="Promotion"
                         sub="2023 Kyowon Tour"
                         marginTop="8rem"
