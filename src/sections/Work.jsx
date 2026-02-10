@@ -10,6 +10,7 @@ import workImg4 from '../assets/img/work4.png';
 import workImg4_1 from '../assets/img/work4_1.png';
 import workImg5 from '../assets/img/work5.png';
 import workImg5_1 from '../assets/img/work5_1.png';
+import workImg6 from '../assets/img/work6.png';
 
 import cloneImg1 from '../assets/img/clone1.png';
 import cloneImg2 from '../assets/img/clone2.png';
@@ -248,8 +249,8 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
                                                 </a>
                                             )
                                         )}
-                                        <a href={uxLink || '#'} className="work-btn" target={uxLink ? "_blank" : "_self"} rel="noopener noreferrer">UX view</a>
-                                        <a href={siteLink || '#'} className="work-btn" target={siteLink ? "_blank" : "_self"} rel="noopener noreferrer">Site view</a>
+                                        {uxLink && <a href={uxLink} className="work-btn" target="_blank" rel="noopener noreferrer">UX view</a>}
+                                        {siteLink && <a href={siteLink} className="work-btn" target="_blank" rel="noopener noreferrer">Site view</a>}
                                     </>
                                 )}
                             </>
@@ -488,6 +489,66 @@ const Work = () => {
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Core Value</h4>
                                             <p style={{ lineHeight: '1.3' }}>
                                                 본 프로젝트는 팬 경험 중심의 UX 설계와 팀 리딩을 통해 반응형 환경에서도 완성도 높은 팬덤 서비스를 구현한 사례입니다.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    />
+
+                    <WorkGalleryItem
+                        image={workImg6}
+                        title="Heroes APP"
+                        sub="2025 EZEN Academy Personal Project"
+                        marginTop="8rem"
+                        uxLink="https://www.figma.com/design/1770h8SO1bWlGHzLjKFqFJ/%EC%9C%A0%EC%88%98%EC%9D%B8-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4?node-id=59-15641&t=LlMsjQS0TI0Vrlih-1"
+                        conceptText={
+                            <div style={{ display: 'flex', gap: '1rem', textAlign: 'left', color: '#ccc', width: '100%', fontSize: '1rem' }}>
+                                <div style={{ flex: '0 0 20%', borderRight: '1px solid rgba(255, 255, 255, 0.3)', paddingRight: '1rem', display: 'flex', alignItems: 'baseline' }}>
+                                    <h3 style={{ fontSize: '2.2rem', fontWeight: '600', color: '#fff', lineHeight: '1.3', margin: 0 }}>
+                                        Heroes APP <span style={{ display: 'block', fontSize: '1.05rem', fontWeight: '400', marginTop: '0.5rem', color: '#aaa' }}>조사·법률·세무 원스톱 해결<br />정보·전문가 매칭 중심<br />개인 프로젝트</span>
+                                    </h3>
+                                </div>
+
+                                <div style={{ flex: '1', paddingLeft: '0.5rem' }}>
+                                    <p style={{ marginBottom: '1.5rem', lineHeight: '1.3' }}>
+                                        조사·법률·세무를 아우르는 원스톱 솔루션으로서, 사용자에게 신뢰를 주는 UI와 명확한 문제 해결 UX를 단독 기획·설계했습니다.
+                                    </p>
+
+                                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', columnGap: '1.5rem', rowGap: '1rem' }}>
+                                        <div>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Design Strategy</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                신뢰 중심의 톤앤매너와 정돈된 레이아웃을 통해 서비스의 전문성을 시각화했습니다.
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Service Planning</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                파편화된 전문 서비스를 원스톱으로 통합하고, 페르소나 기반의 최적화된 전문가 매칭 프로세스를 설계했습니다.
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· UX Problem Solving</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                복잡한 정보 구조를 단순화하고 단계별 UI를 통해 사용자의 정보 접근성과 탐색 편의성을 극대화했습니다.
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Visual System & Prototyping</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                반응형 컴포넌트 시스템 구축을 통해 설계 효율을 극대화하고, 고충실도 프로토타입으로 핵심 UX의 사용성을 검증했습니다.
+                                            </p>
+                                        </div>
+
+                                        <div style={{ gridColumn: '1 / -1' }}>
+                                            <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Core Value</h4>
+                                            <p style={{ lineHeight: '1.3' }}>
+                                                복잡함을 단순함으로 바꾸는 UX 설계를 통해 전문 지식의 문턱을 낮추고, 실질적인 문제 해결을 주도하는 플랫폼 디자이너로서의 전문성을 입증하고자 했습니다.
                                             </p>
                                         </div>
                                     </div>

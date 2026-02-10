@@ -33,7 +33,7 @@ const SkillTools = () => {
     }, []);
 
     return (
-        <section id="skill-tools" className={`skill-tools-section ${isVisible ? 'active' : ''}`} ref={sectionRef}>
+        <section id="skill-tools" className={`skill-tools-section ${isVisible ? 'active' : ''}`} ref={sectionRef} data-theme="gray">
             <div className="tools-container">
                 {tools.map((tool, index) => {
                     const offset = circumference - (tool.percent / 100) * circumference;
