@@ -10,6 +10,7 @@ import workImg4 from '../assets/img/work4.png';
 import workImg4_1 from '../assets/img/work4_1.png';
 import workImg5 from '../assets/img/work5.png';
 import workImg5_1 from '../assets/img/work5_1.png';
+
 import cloneImg1 from '../assets/img/clone1.png';
 import cloneImg2 from '../assets/img/clone2.png';
 import cloneImg3 from '../assets/img/clone3.png';
@@ -22,6 +23,7 @@ import snsImg4 from '../assets/img/sns4.png';
 import snsImg5 from '../assets/img/sns5.png';
 import snsImg6 from '../assets/img/sns6.png';
 import paparecipeVideo from '../assets/video/paparecipe.mp4';
+import readMoreArrow from '../assets/img/readMore2.png';
 
 
 const WorkGalleryHeader = ({ leftText = "UXUI", rightText = "Design", marginTop, isClone }) => {
@@ -51,11 +53,12 @@ const WorkGalleryHeader = ({ leftText = "UXUI", rightText = "Design", marginTop,
     );
 };
 
-const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBottom, overlay, noButtons, layout, overlayPosition, rightText, align, link, uxLink, siteLink, conceptLink, conceptText }) => {
+const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBottom, overlay, noButtons, layout, overlayPosition, rightText, align, link, uxLink, siteLink, conceptLink, conceptText, isClone, hoverImage, isPromotion }) => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isConceptOpen, setIsConceptOpen] = useState(false);
+    const [isHoverOpen, setIsHoverOpen] = useState(false);
 
     // Handle multiple images
     const slides = images || (image ? [image] : []);
@@ -81,7 +84,9 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
     }, [slides.length]);
 
     const ImageWrapper = link ? 'a' : 'div';
-    const wrapperProps = link ? { href: link, className: 'work-gallery-image-wrapper' } : { className: 'work-gallery-image-wrapper' };
+    const wrapperProps = link
+        ? { href: link, className: `work-gallery-image-wrapper ${isClone ? 'is-clone' : ''}`, target: "_blank", rel: "noopener noreferrer" }
+        : { className: `work-gallery-image-wrapper ${isClone ? 'is-clone' : ''}` };
 
     const toggleConcept = (e) => {
         e.preventDefault(); // Prevent navigation if it's an anchor (though we'll use button/div)
@@ -90,14 +95,20 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
 
     return (
         <div
-            className={`work-gallery-item ${layout ? layout : ''} ${align ? `align-${align}` : ''} ${isVisible ? 'animate' : ''}`}
+            className={`work-gallery-item ${layout ? layout : ''} ${align ? `align-${align}` : ''} ${isVisible ? 'animate' : ''} ${isClone ? 'type-clone' : ''}`}
             ref={ref}
             style={{
                 marginTop: marginTop ? marginTop : 0,
                 marginBottom: marginBottom ? marginBottom : 0
             }}
         >
-            <ImageWrapper {...wrapperProps} onMouseEnter={() => conceptText && setIsConceptOpen(true)}>
+            <ImageWrapper
+                {...wrapperProps}
+                onMouseEnter={() => {
+                    if (conceptText) setIsConceptOpen(true);
+                    if (hoverImage) setIsHoverOpen(true);
+                }}
+            >
                 {video ? (
                     <video
                         src={video}
@@ -116,6 +127,49 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
                             className={`work-gallery-image ${index !== currentSlide ? 'slide-hidden' : ''}`}
                         />
                     ))
+                )}
+
+                {/* Hover Image for Promotion Items */}
+                {hoverImage && (
+                    <>
+                        <img
+                            src={hoverImage}
+                            alt={`${title} Hover`}
+                            className={`work-gallery-image-hover ${isHoverOpen ? 'open' : ''}`}
+                        />
+                        {isHoverOpen && (
+                            <button
+                                className="work-concept-close"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    setIsHoverOpen(false);
+                                }}
+                                aria-label="Close"
+                                style={{ color: '#111' }}
+                            >
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </button>
+                        )}
+                    </>
+                )}
+
+                {/* Read More Button for Clone Coding */}
+                {isClone && (
+                    <div className="btnWrap">
+                        {/* We don't need an anchor tag here since the parent ImageWrapper is already an anchor if link is provided. 
+                            However, the CSS provided uses .btnWrap a. Let's adjust structure to match CSS or adjust CSS to match structure.
+                            Since the parent is already an anchor (ImageWrapper), nesting another anchor is invalid HTML.
+                            I will use a div that looks like the anchor in the CSS, or modify the CSS to target the div.
+                            Let's use a div with the class replacing the 'a' so we don't nest <a> tags.
+                          */}
+                        <div className="btn-inner">
+                            <img src={readMoreArrow} alt="Arrow" className="arrow-icon" />
+                            <img src={readMoreArrow} alt="Arrow Hover" className="arrow-icon" />
+                        </div>
+                    </div>
                 )}
 
                 {/* Regular Overlay */}
@@ -163,29 +217,41 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
                         {rightText && <span className="work-year-text">{rightText}</span>}
                         {!noButtons && (
                             <>
-                                {conceptText ? (
+                                {isPromotion ? (
                                     <button
                                         className="work-btn"
-                                        onClick={toggleConcept}
-                                        style={{ backgroundColor: '#fff', color: '#111', cursor: 'pointer' }}
+                                        onClick={() => setIsHoverOpen(!isHoverOpen)}
+                                        style={{ backgroundColor: '#fff', color: '#111', cursor: 'pointer', minWidth: '80px' }}
                                     >
-                                        {isConceptOpen ? 'Close' : 'Project Concept'}
+                                        {isHoverOpen ? 'Close' : 'View'}
                                     </button>
                                 ) : (
-                                    conceptLink && (
-                                        <a
-                                            href={conceptLink}
-                                            className="work-btn"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            style={{ backgroundColor: '#fff', color: '#111' }}
-                                        >
-                                            Project Concept
-                                        </a>
-                                    )
+                                    <>
+                                        {conceptText ? (
+                                            <button
+                                                className="work-btn"
+                                                onClick={toggleConcept}
+                                                style={{ backgroundColor: '#fff', color: '#111', cursor: 'pointer' }}
+                                            >
+                                                {isConceptOpen ? 'Close' : 'Project Concept'}
+                                            </button>
+                                        ) : (
+                                            conceptLink && (
+                                                <a
+                                                    href={conceptLink}
+                                                    className="work-btn"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    style={{ backgroundColor: '#fff', color: '#111' }}
+                                                >
+                                                    Project Concept
+                                                </a>
+                                            )
+                                        )}
+                                        <a href={uxLink || '#'} className="work-btn" target={uxLink ? "_blank" : "_self"} rel="noopener noreferrer">UX view</a>
+                                        <a href={siteLink || '#'} className="work-btn" target={siteLink ? "_blank" : "_self"} rel="noopener noreferrer">Site view</a>
+                                    </>
                                 )}
-                                <a href={uxLink || '#'} className="work-btn" target={uxLink ? "_blank" : "_self"} rel="noopener noreferrer">UX view</a>
-                                <a href={siteLink || '#'} className="work-btn" target={siteLink ? "_blank" : "_self"} rel="noopener noreferrer">Site view</a>
                             </>
                         )}
                     </div>
@@ -376,7 +442,7 @@ const Work = () => {
                         conceptText={
                             <div style={{ display: 'flex', gap: '1rem', textAlign: 'left', color: '#ccc', width: '100%', fontSize: '1rem' }}>
                                 <div style={{ flex: '0 0 20%', borderRight: '1px solid rgba(255, 255, 255, 0.3)', paddingRight: '1rem', display: 'flex', alignItems: 'baseline' }}>
-                                    <h3 style={{ fontSize: '1.75rem', fontWeight: '600', color: '#fff', lineHeight: '1.3', margin: 0 }}>
+                                    <h3 style={{ fontSize: '2.2rem', fontWeight: '600', color: '#fff', lineHeight: '1.3', margin: 0 }}>
                                         Force1 APP <span style={{ display: 'block', fontSize: '1.05rem', fontWeight: '400', marginTop: '0.5rem', color: '#aaa' }}>국내 F1 팬덤을 위한<br />정보·커뮤니티 중심<br />반응형 프로젝트</span>
                                     </h3>
                                 </div>
@@ -431,11 +497,12 @@ const Work = () => {
                     />
 
                     <WorkGalleryItem
-                        images={[workImg3, workImg3_1]}
+                        image={workImg3}
+                        hoverImage={workImg3_1}
                         title="Promotion"
                         sub="2024 Kyowon Tour"
                         marginTop="8rem"
-                        noButtons={true}
+                        isPromotion={true}
                         overlay={
                             <div className="work-overlay-text">
                                 <h3>2024 교원투어 가정의 달</h3>
@@ -451,11 +518,12 @@ const Work = () => {
                     />
 
                     <WorkGalleryItem
-                        images={[workImg4, workImg4_1]}
+                        image={workImg4}
+                        hoverImage={workImg4_1}
                         title="Promotion"
                         sub="2024 Kyowon Tour"
                         marginTop="8rem"
-                        noButtons={true}
+                        isPromotion={true}
                         overlayPosition="left"
                         overlay={
                             <div className="work-overlay-text">
@@ -476,11 +544,12 @@ const Work = () => {
                     />
 
                     <WorkGalleryItem
-                        images={[workImg5, workImg5_1]}
+                        image={workImg5}
+                        hoverImage={workImg5_1}
                         title="Promotion"
                         sub="2023 Kyowon Tour"
                         marginTop="8rem"
-                        noButtons={true}
+                        isPromotion={true}
                         overlay={
                             <div className="work-overlay-text">
                                 <h3>채널A 여행설계자들</h3>
@@ -510,6 +579,7 @@ const Work = () => {
                         noButtons={true}
                         rightText="2026"
                         link="https://suin-yu.github.io/Musign/"
+                        isClone={true}
                     />
 
                     <WorkGalleryItem
@@ -520,6 +590,7 @@ const Work = () => {
                         noButtons={true}
                         rightText="2026"
                         link="https://suin-yu.github.io/Y_Studio/"
+                        isClone={true}
                     />
 
                     <WorkGalleryItem
@@ -530,6 +601,7 @@ const Work = () => {
                         noButtons={true}
                         rightText="2026"
                         link="https://suin-yu.github.io/Crew_a_la_mode/"
+                        isClone={true}
                     />
 
                     <WorkGalleryItem
@@ -540,6 +612,7 @@ const Work = () => {
                         noButtons={true}
                         rightText="2026"
                         link="https://suin-yu.github.io/Phomein/"
+                        isClone={true}
                     />
 
                     <WorkGalleryItem
@@ -551,6 +624,7 @@ const Work = () => {
                         noButtons={true}
                         rightText="2026"
                         link="https://suin-yu.github.io/Hanhwa/"
+                        isClone={true}
                     />
 
                     <WorkGalleryHeader

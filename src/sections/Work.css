@@ -512,7 +512,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -584,7 +584,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.7;
+    opacity: 0.8;
     transition: opacity 0.3s ease, transform 0.3s ease;
     padding: 0;
 }
@@ -592,4 +592,150 @@
 .work-concept-close:hover {
     opacity: 1;
     transform: rotate(90deg);
+}
+
+/* =========================================
+   4. READ MORE BUTTON (Clone Coding)
+   ========================================= */
+.work-gallery-image-wrapper {
+    position: relative;
+    /* Ensure wrapper is relative for absolute positioning of btn */
+    overflow: hidden;
+}
+
+/* Hover Image Transition (Fade) */
+.work-gallery-image-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+    opacity: 0;
+    /* Hidden by default */
+    transition: opacity 0.5s ease;
+    /* Smooth fade */
+    z-index: 20;
+    /* Keep high z-index to cover text */
+}
+
+
+.work-gallery-image-hover.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Image Darkening on Hover - ONLY for Clone Coding */
+.type-clone .work-gallery-image-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    border-radius: 24px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.type-clone .work-gallery-image-wrapper:hover::after {
+    opacity: 1;
+}
+
+/* Button Wrapper */
+.btnWrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    pointer-events: none;
+    /* Mouse events pass through to the link */
+}
+
+/* Inner Button Circle */
+.btn-inner {
+    display: block;
+    width: 170px;
+    height: 170px;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    position: relative;
+    transition: all 0.5s;
+    box-sizing: border-box;
+    /* Ensure border doesn't add to size if needed, though standard is content-box often. standard box model is content-box. */
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+/* Icons */
+.btn-inner .arrow-icon {
+    position: absolute;
+    width: 22%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: opacity 0.3s ease;
+}
+
+.btn-inner .arrow-icon:nth-child(2) {
+    opacity: 0;
+}
+
+/* Hover State - Triggered by Parent Wrapper Hover */
+.work-gallery-image-wrapper:hover .btn-inner {
+    border-color: #fff;
+    /* Show border on hover if desired, or keep transparent. User said "readmore rotating". */
+    opacity: 1;
+    transform: scale(1);
+}
+
+.work-gallery-image-wrapper:hover .btn-inner .arrow-icon:nth-child(2) {
+    opacity: 1;
+}
+
+/* Optional: hide first arrow on hover if desired, or keep them overlapping (crossfade) 
+   The user CSS didn't explicitly hide the first one, but normally you crossfade.
+   I'll hide the first one.
+*/
+.work-gallery-image-wrapper:hover .btn-inner .arrow-icon:nth-child(1) {
+    opacity: 0;
+}
+
+/* Spinning Background Animation */
+.btn-inner::before {
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-radius: 100%;
+    background: #fff url(../assets/img/readMore3.png) no-repeat center/160px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation-name: spin;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.work-gallery-image-wrapper:hover .btn-inner::before {
+    width: 100%;
+    /* Matches existing logic */
+    height: 100%;
+}
+
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
