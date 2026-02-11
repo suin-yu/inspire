@@ -10,10 +10,10 @@ const SkillTools = () => {
         { name: 'Ai', percent: 95, color: '#eda845' },     // Orange
         { name: 'Figma', percent: 90, color: '#e3655b' },  // Red
         { name: 'React', percent: 90, color: '#5fb374ff' },  // Teal (Muted)
-        { name: 'Html', percent: 95, color: '#6da8b8' },   // Yellow
-        { name: 'Css', percent: 90, color: '#4867aa' },    // Deep Blue
-        { name: 'Js', percent: 80, color: '#7a6abf' },     // Purple
-        { name: 'Jq', percent: 70, color: '#9b63b6' },     // Magenta
+        { name: 'Html·Css', percent: 95, color: '#6da8b8' },   // Yellow
+        { name: 'Js·Jq', percent: 90, color: '#4867aa' },    // Deep Blue
+        { name: 'Ae', percent: 80, color: '#7a6abf' },     // Purple
+        { name: 'Pr', percent: 70, color: '#9b63b6' },     // Magenta
     ];
 
     // Circle config

@@ -84,6 +84,7 @@ const Home = () => {
     };
 
     // Style Interpolation
+    // Style Interpolation
     const getImgStyle = (p, staggerOffset = 0, customEndMargin = 38) => {
         // We want the whole transition to happen between 0.1 and 0.6
         // Stagger offset adds a little delay per item

@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Work.css';
 // import workImg from '../assets/img/work1.png'; // Removed unused
-import workImg2 from '../assets/img/work2.png';
+// import workImg2 from '../assets/img/work2.png';
 import workImg3 from '../assets/img/work3.png';
 import workImg3_1 from '../assets/img/work3_1.png';
 import workImg4 from '../assets/img/work4.png';
@@ -24,6 +24,7 @@ import snsImg4 from '../assets/img/sns4.png';
 import snsImg5 from '../assets/img/sns5.png';
 import snsImg6 from '../assets/img/sns6.png';
 import paparecipeVideo from '../assets/video/paparecipe.mp4';
+import force1Video from '../assets/video/Force1.mp4';
 import readMoreArrow from '../assets/img/readMore2.png';
 
 
@@ -378,30 +379,29 @@ const Work = () => {
                             <div style={{ display: 'flex', gap: '1rem', textAlign: 'left', color: '#ccc', width: '100%', fontSize: '1rem' }}>
                                 <div style={{ flex: '0 0 20%', borderRight: '1px solid rgba(255, 255, 255, 0.3)', paddingRight: '1rem', display: 'flex', alignItems: 'baseline' }}>
                                     <h3 style={{ fontSize: '2.2rem', fontWeight: '600', color: '#fff', lineHeight: '1.3', margin: 0 }}>
-                                        Papa Recipe Renewal <span style={{ display: 'block', fontSize: '1.05rem', fontWeight: '400', marginTop: '0.5rem', color: '#aaa' }}>자연주의 철학과 AI 기술을 융합한 반응형 프로젝트</span>
+                                        Papa Recipe Renewal <span style={{ display: 'block', fontSize: '1.05rem', fontWeight: '400', marginTop: '0.5rem', color: '#aaa' }}>자연주의 철학과 AI 기술을 융합한 반응형 팀 프로젝트</span>
                                     </h3>
                                 </div>
 
                                 <div style={{ flex: '1', paddingLeft: '0.5rem' }}>
-                                    <p style={{ lineHeight: '1', marginBottom: '-0.5rem' }}>
-                                        본 프로젝트는 파파레서피의 자연주의 브랜드 철학을 현대적인 감각으로 재해석한 디자인 중심의 웹 리뉴얼 작업입니다.
-                                    </p>
-                                    <p style={{ marginBottom: '1.5rem', lineHeight: '1' }}>
-                                        팀 리더로서 프로젝트 전반을 총괄하며, 브랜드 정체성의 일관성 확립과 반응형 웹 환경에 최적화된 구현을 핵심 목표로 설정했습니다.
+
+                                    <p style={{ marginBottom: '1.5rem', lineHeight: '1.5' }}>
+                                        팀 리더로서 하이엔드 브랜드 전환 전략을 총괄하며,
+                                        UX 개선과 AI 비주얼 디렉팅을 통해 브랜드의 신뢰와 시각적 위상을 재정의한 프로젝트입니다.
                                     </p>
 
                                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', columnGap: '1.5rem', rowGap: '1rem' }}>
                                         <div>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Design Leadership</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                브랜드 철학 기반의 디자인 시스템을 정립하고, 일관된 톤앤매너 유지를 위한 시각적 가이드라인과 디자인 방향성을 주도했습니다.
+                                                브랜드 전략과 디자인 의사결정을 총괄하며, 신뢰 기반 중고가 포지셔닝과 팀 디자인 기준을 수립했습니다.
                                             </p>
                                         </div>
 
                                         <div>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· AI Visual Directing</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                Midjourney AI 프롬프트 전략과 고도화된 큐레이션으로 브랜드 컨셉에 최적화된 하이엔드 비주얼을 구현했습니다.
+                                                AI 비주얼 전략을 총괄해 프롬프트 기준을 정립하고, 표준화된 프로세스로 하이엔드 비주얼과 협업 효율을 확보했습니다.
                                             </p>
                                         </div>
 
@@ -415,14 +415,15 @@ const Work = () => {
                                         <div>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Bridge Role</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                AI 비주얼과 웹 구현 간의 간극을 줄이기 위해 디자인·개발 간 커뮤니케이션을 주도했습니다.
+                                                UX·IA 개편을 주도해 경험 중심 UX로 전환하고, 협업 조율을 통해 구현 완성도를 책임졌습니다.
                                             </p>
                                         </div>
 
                                         <div style={{ gridColumn: '1 / -1' }}>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Core Value</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                본 프로젝트는 AI 기반 디자인 프로세스로 반응형 웹 완성도와 팀 협업 효율을 함께 높인 프로젝트입니다.
+                                                AI 기술을 도구로 활용하되 브랜드 가치 전달을 본질로 삼아,
+                                                자연주의의 따뜻함과 신뢰를 구현했으며, 프로세스 효율과 시각적 완성도를 동시에 이끈 리더십 역량을 보여준 프로젝트입니다.
                                             </p>
                                         </div>
                                     </div>
@@ -432,7 +433,7 @@ const Work = () => {
                     />
 
                     <WorkGalleryItem
-                        image={workImg2}
+                        video={force1Video}
                         title="Force1 APP"
                         sub="2026 EZEN Academy Team Project | Team Leader"
                         marginTop="8rem"
@@ -442,7 +443,7 @@ const Work = () => {
                             <div style={{ display: 'flex', gap: '1rem', textAlign: 'left', color: '#ccc', width: '100%', fontSize: '1rem' }}>
                                 <div style={{ flex: '0 0 20%', borderRight: '1px solid rgba(255, 255, 255, 0.3)', paddingRight: '1rem', display: 'flex', alignItems: 'baseline' }}>
                                     <h3 style={{ fontSize: '2.2rem', fontWeight: '600', color: '#fff', lineHeight: '1.3', margin: 0 }}>
-                                        Force1 APP <span style={{ display: 'block', fontSize: '1.05rem', fontWeight: '400', marginTop: '0.5rem', color: '#aaa' }}>국내 F1 팬덤을 위한<br />정보·커뮤니티 중심<br />반응형 프로젝트</span>
+                                        Force1 APP <span style={{ display: 'block', fontSize: '1.05rem', fontWeight: '400', marginTop: '0.5rem', color: '#aaa' }}>국내 F1 팬덤을 위한<br />정보·커뮤니티 중심의<br />반응형 팀 프로젝트</span>
                                     </h3>
                                 </div>
 
@@ -458,7 +459,8 @@ const Work = () => {
                                         <div>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Design Leadership</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                팬덤 감성을 반영한 디자인 가이드를 수립하고, 방대한 데이터의 시각적 전달 효율을 극대화했습니다.
+                                                팀 리더로서 F1 팬덤의 정체성과 니즈를 정의하고,
+                                                속도감 있는 영상과 데이터 친화적 비주얼 시스템 구축을 총괄했습니다.
                                             </p>
                                         </div>
 
@@ -472,21 +474,24 @@ const Work = () => {
                                         <div>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· UX Problem Solving</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                고밀도 정보 환경에서 가독성과 사용성을 확보하기 위해, 지속적인 인터렉션 개선과 플로우 최적화로 사용자 경험을 고도화했습니다.
+                                                고밀도 레이싱 데이터를 직관적으로 전달하기 위해 UX·IA 전략을 주도하고,
+                                                프로토타이핑 기반의 반복 개선으로 몰입형 팬 경험 구조를 완성했습니다.
                                             </p>
                                         </div>
 
                                         <div>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Bridge Role</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                기획, 디자인, 개발 간의 요구사항을 조율하며 기능 구현 과정에서 발생한 이슈를 정리하고 해결 방향을 제시했습니다.
+                                                기획–디자인–개발 전 과정을 리딩하며 의도와 구현 간의 간극을 조율했고,
+                                                기술적 제약 속에서도 반응형 환경 전반의 UX 완성도를 책임졌습니다.
                                             </p>
                                         </div>
 
                                         <div style={{ gridColumn: '1 / -1' }}>
                                             <h4 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#fff', marginBottom: '0.2rem' }}>· Core Value</h4>
                                             <p style={{ lineHeight: '1.3' }}>
-                                                본 프로젝트는 팬 경험 중심의 UX 설계와 팀 리딩을 통해 반응형 환경에서도 완성도 높은 팬덤 서비스를 구현한 사례입니다.
+                                                국내 F1 팬덤의 공백을 정확히 포착해,
+                                                AI 기술과 디자인을 통합한 팬 경험 중심 디지털 플랫폼을 구현했습니다.
                                             </p>
                                         </div>
                                     </div>
@@ -505,7 +510,7 @@ const Work = () => {
                             <div style={{ display: 'flex', gap: '1rem', textAlign: 'left', color: '#ccc', width: '100%', fontSize: '1rem' }}>
                                 <div style={{ flex: '0 0 20%', borderRight: '1px solid rgba(255, 255, 255, 0.3)', paddingRight: '1rem', display: 'flex', alignItems: 'baseline' }}>
                                     <h3 style={{ fontSize: '2.2rem', fontWeight: '600', color: '#fff', lineHeight: '1.3', margin: 0 }}>
-                                        Heroes APP <span style={{ display: 'block', fontSize: '1.05rem', fontWeight: '400', marginTop: '0.5rem', color: '#aaa' }}>조사·법률·세무 원스톱 해결<br />정보·전문가 매칭 중심<br />개인 프로젝트</span>
+                                        Heroes APP <span style={{ display: 'block', fontSize: '1.05rem', fontWeight: '400', marginTop: '0.5rem', color: '#aaa' }}>조사·법률·세무 원스톱 해결<br />정보·전문가 매칭 중심의<br />개인 프로젝트</span>
                                     </h3>
                                 </div>
 
