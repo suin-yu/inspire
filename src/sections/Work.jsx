@@ -380,7 +380,7 @@ const Work = () => {
                                 <div style={{ flex: '0 0 20%', borderRight: '1px solid rgba(255, 255, 255, 0.3)', paddingRight: '1rem', display: 'flex', alignItems: 'baseline' }}>
                                     <h3 style={{ fontSize: '2.2rem', fontWeight: '600', color: '#fff', lineHeight: '1.3', margin: 0 }}>
                                         Papa Recipe Renewal <span style={{ display: 'block', fontSize: '1.05rem', fontWeight: '400', marginTop: '0.5rem', color: '#aaa' }}>
-                                            <br />Role: Team Leader<br />(기여도 35%)<br /><br />디자인 시스템 구축, 메인 UI 디자인 코딩과 전체 일정관리
+                                            <br />Role: Team Leader<br />(기여도 70%)<br /><br />디자인 시스템 구축, 메인 UI 디자인 코딩과 전체 일정 관리
 
                                         </span>
                                     </h3>
@@ -446,7 +446,7 @@ const Work = () => {
                             <div style={{ display: 'flex', gap: '1rem', textAlign: 'left', color: '#ccc', width: '100%', fontSize: '1rem' }}>
                                 <div style={{ flex: '0 0 20%', borderRight: '1px solid rgba(255, 255, 255, 0.3)', paddingRight: '1rem', display: 'flex', alignItems: 'baseline' }}>
                                     <h3 style={{ fontSize: '2.2rem', fontWeight: '600', color: '#fff', lineHeight: '1.3', margin: 0 }}>
-                                        Force1 APP <span style={{ display: 'block', fontSize: '1.05rem', fontWeight: '400', marginTop: '0.5rem', color: '#aaa' }}><br />Role: Team Leader<br />(기여도 30%)<br /><br />서비스 기획, IA 설계, 메인 UI 디자인 및 전체 일정 관리 총괄
+                                        Force1 APP <span style={{ display: 'block', fontSize: '1.05rem', fontWeight: '400', marginTop: '0.5rem', color: '#aaa' }}><br />Role: Team Leader<br />(기여도 80%)<br /><br />서비스 기획, IA 설계, 메인 UI 디자인 및 전체 일정 관리 총괄
                                         </span>
 
                                     </h3>
