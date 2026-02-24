@@ -121,6 +121,22 @@
     .design-img {
         height: 80px;
     }
+
+    /* 4 lines filling background tightly with larger text */
+    .marquee-text {
+        font-size: 32vh;
+        line-height: 0.8;
+        letter-spacing: -5px;
+    }
+
+    .text-background .marquee-row:nth-child(n+5) {
+        display: none;
+    }
+
+    .scene {
+        transform: scale(0.02);
+        /* Reduced from 0.6 */
+    }
 }
 
 @media (max-width: 768px) {
@@ -175,6 +191,13 @@
     color: #fff;
     margin-right: 40px;
     line-height: 0.8;
+}
+
+/* Hide extra rows on desktop to preserve original design */
+@media (min-width: 1025px) {
+    .marquee-row:nth-child(n+5) {
+        display: none;
+    }
 }
 
 /* Animation Defs */

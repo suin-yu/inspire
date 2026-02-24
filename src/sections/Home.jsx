@@ -159,30 +159,14 @@ const Home = () => {
         <section id="home" className="home-section">
             <div className="home-intro" data-theme="default">
                 <div className="text-background">
-                    <div className="marquee-row">
-                        <div className="marquee-track animate-right">
-                            {marqueeText.map((text, i) => <span key={i} className="marquee-text">{text}</span>)}
-                            {marqueeText.map((text, i) => <span key={`dup-${i}`} className="marquee-text">{text}</span>)}
+                    {Array(8).fill(null).map((_, index) => (
+                        <div className="marquee-row" key={index}>
+                            <div className={`marquee-track ${index % 2 === 0 ? 'animate-right' : 'animate-left'}`}>
+                                {marqueeText.map((text, i) => <span key={i} className="marquee-text">{text}</span>)}
+                                {marqueeText.map((text, i) => <span key={`dup-${i}`} className="marquee-text">{text}</span>)}
+                            </div>
                         </div>
-                    </div>
-                    <div className="marquee-row">
-                        <div className="marquee-track animate-left">
-                            {marqueeText.map((text, i) => <span key={i} className="marquee-text">{text}</span>)}
-                            {marqueeText.map((text, i) => <span key={`dup-${i}`} className="marquee-text">{text}</span>)}
-                        </div>
-                    </div>
-                    <div className="marquee-row">
-                        <div className="marquee-track animate-right">
-                            {marqueeText.map((text, i) => <span key={i} className="marquee-text">{text}</span>)}
-                            {marqueeText.map((text, i) => <span key={`dup-${i}`} className="marquee-text">{text}</span>)}
-                        </div>
-                    </div>
-                    <div className="marquee-row">
-                        <div className="marquee-track animate-left">
-                            {marqueeText.map((text, i) => <span key={i} className="marquee-text">{text}</span>)}
-                            {marqueeText.map((text, i) => <span key={`dup-${i}`} className="marquee-text">{text}</span>)}
-                        </div>
-                    </div>
+                    ))}
                 </div>
 
                 <div className="scene">
