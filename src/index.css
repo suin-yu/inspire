@@ -3,8 +3,8 @@
 
 @font-face {
   font-family: 'AtheneVoyage';
-  src: url('./assets/fonts/Athene%20Voyage.ttf') format('truetype'),
-    url('./assets/fonts/Athene%20Voyage.otf') format('opentype');
+  src: url('./assets/fonts/AtheneVoyage.ttf') format('truetype'),
+    url('./assets/fonts/AtheneVoyage.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
