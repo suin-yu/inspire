@@ -274,12 +274,12 @@
 */
 .carousel__face {
     position: absolute;
-    width: 400px;
-    height: 350px;
+    width: 360px;
+    height: 315px;
     left: 50%;
     top: 50%;
-    margin-left: -200px;
-    margin-top: -175px;
+    margin-left: -180px;
+    margin-top: -157.5px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
@@ -294,7 +294,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.9;
+    opacity: 0.7;
     transition: opacity 0.3s ease;
 }
 
@@ -304,27 +304,27 @@
 
 /* Hexagon Geometry (6 sides) */
 .carousel__face:nth-child(1) {
-    transform: rotateY(0deg) translateZ(346px);
+    transform: rotateY(0deg) translateZ(312px);
 }
 
 .carousel__face:nth-child(2) {
-    transform: rotateY(60deg) translateZ(346px);
+    transform: rotateY(60deg) translateZ(312px);
 }
 
 .carousel__face:nth-child(3) {
-    transform: rotateY(120deg) translateZ(346px);
+    transform: rotateY(120deg) translateZ(312px);
 }
 
 .carousel__face:nth-child(4) {
-    transform: rotateY(180deg) translateZ(346px);
+    transform: rotateY(180deg) translateZ(312px);
 }
 
 .carousel__face:nth-child(5) {
-    transform: rotateY(240deg) translateZ(346px);
+    transform: rotateY(240deg) translateZ(312px);
 }
 
 .carousel__face:nth-child(6) {
-    transform: rotateY(300deg) translateZ(346px);
+    transform: rotateY(300deg) translateZ(312px);
 }
 
 @keyframes rotateCarousel {
@@ -344,34 +344,34 @@
     }
 
     .carousel__face {
-        width: 240px;
-        height: 210px;
-        margin-left: -120px;
-        margin-top: -105px;
+        width: 216px;
+        height: 189px;
+        margin-left: -108px;
+        margin-top: -94.5px;
     }
 
     .carousel__face:nth-child(1) {
-        transform: rotateY(0deg) translateZ(208px);
+        transform: rotateY(0deg) translateZ(187px);
     }
 
     .carousel__face:nth-child(2) {
-        transform: rotateY(60deg) translateZ(208px);
+        transform: rotateY(60deg) translateZ(187px);
     }
 
     .carousel__face:nth-child(3) {
-        transform: rotateY(120deg) translateZ(208px);
+        transform: rotateY(120deg) translateZ(187px);
     }
 
     .carousel__face:nth-child(4) {
-        transform: rotateY(180deg) translateZ(208px);
+        transform: rotateY(180deg) translateZ(187px);
     }
 
     .carousel__face:nth-child(5) {
-        transform: rotateY(240deg) translateZ(208px);
+        transform: rotateY(240deg) translateZ(187px);
     }
 
     .carousel__face:nth-child(6) {
-        transform: rotateY(300deg) translateZ(208px);
+        transform: rotateY(300deg) translateZ(187px);
     }
 }
 
