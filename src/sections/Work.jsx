@@ -426,17 +426,17 @@ const Work = () => {
     };
 
     const getTrackTransform = () => {
+        if (trackRef.current) {
+            const trackWidth = trackRef.current.scrollWidth;
+            const vw = windowWidth;
+            const startX = vw <= 480 ? vw * 0.05 : (vw <= 768 ? vw * 0.08 : vw * 0.1);
+            // 우측 여백이 정확히 5%가 되는 위치 (오른쪽 끝 = 화면의 95%)
+            const endX = (vw * 0.95) - trackWidth;
+            const dist = Math.max(0, startX - endX);
+            const currentX = startX - (progress * dist);
+            return `translateX(${currentX}px)`;
+        }
         if (windowWidth <= 768) {
-            if (trackRef.current) {
-                const trackWidth = trackRef.current.scrollWidth;
-                const vw = windowWidth;
-                const startX = vw <= 480 ? vw * 0.05 : vw * 0.08;
-                // 우측 여백이 정확히 5%가 되는 위치 (오른쪽 끝 = 화면의 95%)
-                const endX = (vw * 0.95) - trackWidth;
-                const dist = Math.max(0, startX - endX);
-                const currentX = startX - (progress * dist);
-                return `translateX(${currentX}px)`;
-            }
             const fallbackDist = windowWidth <= 480 ? 95 : 85;
             return `translateX(calc(${windowWidth <= 480 ? '5vw' : '8vw'} - ${progress * fallbackDist}vw))`;
         }
