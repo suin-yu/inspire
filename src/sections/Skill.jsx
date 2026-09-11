@@ -4,45 +4,31 @@ import './Skill.css';
 const Skill = () => {
     const sectionRef = useRef(null);
     const trackRef = useRef(null);
-    const trackWidthRef = useRef(0);
     const [progress, setProgress] = useState(0);
-
-    const updateTrackWidth = () => {
-        if (trackRef.current) {
-            trackWidthRef.current = trackRef.current.scrollWidth;
-        }
-    };
+    const [, setMounted] = useState(false);
 
     useEffect(() => {
-        updateTrackWidth();
-        window.addEventListener('resize', updateTrackWidth);
-        return () => window.removeEventListener('resize', updateTrackWidth);
+        setMounted(true);
     }, []);
 
     useEffect(() => {
-        let ticking = false;
         const handleScroll = () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    if (sectionRef.current) {
-                        const { top, height } = sectionRef.current.getBoundingClientRect();
-                        const viewportHeight = window.innerHeight;
-                        const scrollLength = height - viewportHeight;
-                        const scrolled = -top;
+            if (!sectionRef.current) return;
+            const element = sectionRef.current;
+            const { top, height } = element.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
 
-                        let p = scrolled / scrollLength;
-                        if (p < 0) p = 0;
-                        if (p > 1) p = 1;
+            const scrollLength = height - viewportHeight;
+            const scrolled = -top;
 
-                        setProgress(p);
-                    }
-                    ticking = false;
-                });
-                ticking = true;
-            }
+            let p = scrolled / scrollLength;
+            if (p < 0) p = 0;
+            if (p > 1) p = 1;
+
+            setProgress(p);
         };
 
-        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('scroll', handleScroll);
         handleScroll();
 
         return () => window.removeEventListener('scroll', handleScroll);
@@ -106,8 +92,8 @@ const Skill = () => {
 
     const getTrackTransform = () => {
         if (windowWidth <= 768) {
-            const trackWidth = trackWidthRef.current || (trackRef.current ? trackRef.current.scrollWidth : 0);
-            if (trackWidth > 0) {
+            if (trackRef.current) {
+                const trackWidth = trackRef.current.scrollWidth;
                 const vw = windowWidth;
                 const startX = vw <= 480 ? vw * 0.05 : vw * 0.08;
                 // 우측 여백이 정확히 5%가 되는 위치 (오른쪽 끝 = 화면의 95%)
