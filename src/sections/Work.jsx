@@ -62,7 +62,10 @@ const WorkGalleryHeader = ({ leftText = "UXUI", rightText = "Design", marginTop,
         <div
             className={`work-gallery-header ${isVisible ? 'animate' : ''} ${isClone ? 'clone-header' : ''}`}
             ref={ref}
-            style={{ marginTop: marginTop || 0, marginBottom: marginBottom !== undefined ? marginBottom : '' }}
+            style={{
+                marginTop: isMobile ? (marginTop ? '4rem' : 0) : (marginTop ? marginTop : 0),
+                marginBottom: isMobile ? (marginBottom ? '2rem' : 0) : (marginBottom ? marginBottom : 0)
+            }}
         >
             <h2 className="work-gallery-title-left">{leftText}</h2>
             <h2 className="work-gallery-title-right">{rightText}</h2>
@@ -128,11 +131,11 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
 
     return (
         <div
-            className={`work-gallery-item ${layout ? layout : ''} ${align ? `align-${align}` : ''} ${isVisible ? 'animate' : ''} ${isClone ? 'type-clone' : ''}`}
+            className={`work-gallery-item ${layout ? layout : ''} ${align ? `align-${align}` : ''} ${isVisible ? 'animate' : ''} ${isClone ? 'type-clone' : ''} ${isPromotion ? 'is-promotion' : ''}`}
             ref={ref}
             style={{
-                marginTop: marginTop ? marginTop : 0,
-                marginBottom: marginBottom ? marginBottom : 0
+                marginTop: isMobile ? (marginTop && marginTop !== '0.1rem' ? '3rem' : 0) : (marginTop ? marginTop : 0),
+                marginBottom: isMobile ? (marginBottom ? '2.5rem' : 0) : (marginBottom ? marginBottom : 0)
             }}
         >
             <ImageWrapper
@@ -200,8 +203,8 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
                     </div>
                 )}
 
-                {/* Regular Overlay */}
-                {overlay && (
+                {/* Regular Overlay (Desktop only) */}
+                {!isMobile && overlay && (
                     <div className={`work-image-overlay ${overlayPosition === 'left' ? 'overlay-left' : ''} ${currentSlide !== 0 ? 'overlay-hidden' : ''} ${isPromotion && !isHoverOpen ? 'promo-hidden' : ''} ${isPromotion ? 'promotion-overlay' : ''}`}>
                         {overlay}
                     </div>
@@ -246,13 +249,15 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
                         {!noButtons && (
                             <>
                                 {isPromotion ? (
-                                    <button
-                                        className="work-btn"
-                                        onClick={() => setIsHoverOpen(!isHoverOpen)}
-                                        style={{ backgroundColor: '#fff', color: '#111', cursor: 'pointer', minWidth: '80px' }}
-                                    >
-                                        {isHoverOpen ? 'Close' : 'View'}
-                                    </button>
+                                    !isMobile && (
+                                        <button
+                                            className="work-btn work-btn-promotion"
+                                            onClick={() => setIsHoverOpen(!isHoverOpen)}
+                                            style={{ backgroundColor: '#fff', color: '#111', cursor: 'pointer', minWidth: '80px' }}
+                                        >
+                                            {isHoverOpen ? 'Close' : 'View'}
+                                        </button>
+                                    )
                                 ) : (
                                     <>
                                         {!isMobile && conceptText && (
