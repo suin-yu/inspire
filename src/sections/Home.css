@@ -133,10 +133,6 @@
         display: none;
     }
 
-    .scene {
-        transform: scale(0.02);
-        /* Reduced from 0.6 */
-    }
 }
 
 @media (max-width: 768px) {
@@ -394,46 +390,79 @@
 
 @media (max-width: 768px) {
     .scene {
-        width: 200px;
-        height: 300px;
-        transform: scale(0.65);
+        width: 160px;
+        height: 220px;
     }
 
     .carousel__face {
-        width: 216px;
-        height: 189px;
-        margin-left: -108px;
-        margin-top: -94.5px;
+        width: 140px;
+        height: 122px;
+        margin-left: -70px;
+        margin-top: -61px;
+        border-radius: 8px;
     }
 
     .carousel__face:nth-child(1) {
-        transform: rotateY(0deg) translateZ(187px);
+        transform: rotateY(0deg) translateZ(121px);
     }
 
     .carousel__face:nth-child(2) {
-        transform: rotateY(60deg) translateZ(187px);
+        transform: rotateY(60deg) translateZ(121px);
     }
 
     .carousel__face:nth-child(3) {
-        transform: rotateY(120deg) translateZ(187px);
+        transform: rotateY(120deg) translateZ(121px);
     }
 
     .carousel__face:nth-child(4) {
-        transform: rotateY(180deg) translateZ(187px);
+        transform: rotateY(180deg) translateZ(121px);
     }
 
     .carousel__face:nth-child(5) {
-        transform: rotateY(240deg) translateZ(187px);
+        transform: rotateY(240deg) translateZ(121px);
     }
 
     .carousel__face:nth-child(6) {
-        transform: rotateY(300deg) translateZ(187px);
+        transform: rotateY(300deg) translateZ(121px);
     }
 }
 
 @media (max-width: 480px) {
     .scene {
-        transform: scale(0.55);
+        width: 130px;
+        height: 180px;
+    }
+
+    .carousel__face {
+        width: 114px;
+        height: 100px;
+        margin-left: -57px;
+        margin-top: -50px;
+        border-radius: 6px;
+    }
+
+    .carousel__face:nth-child(1) {
+        transform: rotateY(0deg) translateZ(99px);
+    }
+
+    .carousel__face:nth-child(2) {
+        transform: rotateY(60deg) translateZ(99px);
+    }
+
+    .carousel__face:nth-child(3) {
+        transform: rotateY(120deg) translateZ(99px);
+    }
+
+    .carousel__face:nth-child(4) {
+        transform: rotateY(180deg) translateZ(99px);
+    }
+
+    .carousel__face:nth-child(5) {
+        transform: rotateY(240deg) translateZ(99px);
+    }
+
+    .carousel__face:nth-child(6) {
+        transform: rotateY(300deg) translateZ(99px);
     }
 }
 
