@@ -418,9 +418,9 @@ const Work = () => {
 
     const getTrackTransform = () => {
         if (windowWidth <= 480) {
-            return `translateX(calc(5vw - ${progress * 190}vw))`;
+            return `translateX(calc(5vw - ${progress * 92}vw))`;
         } else if (windowWidth <= 768) {
-            return `translateX(calc(8vw - ${progress * 140}vw))`;
+            return `translateX(calc(8vw - ${progress * 82}vw))`;
         }
         return `translateX(calc(10vw - ${progress * 83}vw))`;
     };
