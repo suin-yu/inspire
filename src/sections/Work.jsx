@@ -118,10 +118,8 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
         return () => clearInterval(interval);
     }, [slides.length]);
 
-    const ImageWrapper = link ? 'a' : 'div';
-    const wrapperProps = link
-        ? { href: link, className: `work-gallery-image-wrapper ${isClone ? 'is-clone' : ''}`, target: "_blank", rel: "noopener noreferrer" }
-        : { className: `work-gallery-image-wrapper ${isClone ? 'is-clone' : ''}` };
+    const ImageWrapper = 'div';
+    const wrapperProps = { className: `work-gallery-image-wrapper ${isClone ? 'is-clone' : ''}` };
 
     const toggleConcept = (e) => {
         e.preventDefault(); // Prevent navigation if it's an anchor
@@ -141,8 +139,13 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
             <ImageWrapper
                 {...wrapperProps}
                 onMouseEnter={() => {
-                    if (!isMobile && conceptText) setIsConceptOpen(true);
+                    if (isMobile) return;
+                    if (conceptText) setIsConceptOpen(true);
                     if (hoverImage) setIsHoverOpen(true);
+                }}
+                onMouseLeave={() => {
+                    if (isMobile) return;
+                    if (hoverImage) setIsHoverOpen(false);
                 }}
             >
                 {video ? (
@@ -193,14 +196,29 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
                     </>
                 )}
 
-                {/* Read More Button for Clone Coding */}
+                {/* Read More Button for Clone Coding - Desktop overlay */}
                 {isClone && (
-                    <div className="btnWrap">
-                        <div className="btn-inner">
-                            <img src={readMoreArrow} alt="Arrow" className="arrow-icon" />
-                            <img src={readMoreArrow} alt="Arrow Hover" className="arrow-icon" />
+                    link ? (
+                        <a
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btnWrap desktop-btn"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <div className="btn-inner">
+                                <img src={readMoreArrow} alt="Arrow" className="arrow-icon" />
+                                <img src={readMoreArrow} alt="Arrow Hover" className="arrow-icon" />
+                            </div>
+                        </a>
+                    ) : (
+                        <div className="btnWrap desktop-btn">
+                            <div className="btn-inner">
+                                <img src={readMoreArrow} alt="Arrow" className="arrow-icon" />
+                                <img src={readMoreArrow} alt="Arrow Hover" className="arrow-icon" />
+                            </div>
                         </div>
-                    </div>
+                    )
                 )}
 
                 {/* Regular Overlay (Desktop only) */}
@@ -241,11 +259,25 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
             <div className="work-gallery-details">
                 <div className="work-gallery-text-left">
                     <h3>{title}</h3>
-                    <p>{sub}</p>
+                    {sub && <p>{sub}</p>}
                 </div>
-                {(!noButtons || rightText) && (
+                {(!noButtons || rightText || isClone) && (
                     <div className="work-gallery-text-right">
                         {rightText && <span className="work-year-text">{rightText}</span>}
+                        {isClone && link && (
+                            <a
+                                href={link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btnWrap mobile-title-btn"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <div className="btn-inner">
+                                    <img src={readMoreArrow} alt="Arrow" className="arrow-icon" />
+                                    <img src={readMoreArrow} alt="Arrow Hover" className="arrow-icon" />
+                                </div>
+                            </a>
+                        )}
                         {!noButtons && (
                             <>
                                 {isPromotion ? (

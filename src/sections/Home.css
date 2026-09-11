@@ -572,6 +572,11 @@
     /* Ensuring no external margin affects alignment */
 }
 
+.work-desc-line {
+    display: block;
+    white-space: nowrap;
+}
+
 /* Right Content (Cards) */
 .work-right {
     flex: 1;
@@ -705,14 +710,15 @@
 
 @media (max-width: 1280px) {
     .work-container {
-        flex-direction: column;
+        flex-direction: column-reverse;
         height: auto;
     }
 
     .work-left {
         text-align: center;
         align-items: center;
-        margin-bottom: 50px;
+        margin-top: 60px;
+        margin-bottom: 0;
     }
 
     .work-title {
@@ -752,7 +758,8 @@
 
     .work-left {
         transform: translateY(0);
-        margin-bottom: 36px;
+        margin-top: 48px;
+        margin-bottom: 0;
     }
 
     .work-title {
@@ -789,10 +796,11 @@
     }
 
     .work-desc {
-        font-size: 26px;
+        font-size: clamp(15px, 4.3vw, 20px);
         line-height: 1.4;
         text-align: left;
         margin: 0;
+        letter-spacing: -0.3px;
     }
 
     .work-right {
@@ -804,7 +812,7 @@
         width: 100%;
         max-width: 320px;
         height: 400px;
-        margin-top: 30px;
+        margin-top: 50px;
         margin-right: 0;
     }
 
@@ -842,7 +850,7 @@
     }
 
     .work-desc {
-        font-size: 22px;
+        font-size: clamp(14px, 4.3vw, 18px);
     }
 
     .work-line {

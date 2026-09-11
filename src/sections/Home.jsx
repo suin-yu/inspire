@@ -265,8 +265,8 @@ const Home = () => {
                         <div className="work-desc-box">
                             <div className="work-line"></div>
                             <p className="work-desc">
-                                디자인 사고를 바탕으로 문제를 정의하고,<br />
-                                명확한 프로세스와 실행으로 결과를 만듭니다.
+                                <span className="work-desc-line">디자인 사고를 바탕으로 문제를 정의하고,</span>
+                                <span className="work-desc-line">명확한 프로세스와 실행으로 결과를 만듭니다.</span>
                             </p>
                         </div>
                     </div>
