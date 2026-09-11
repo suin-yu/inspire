@@ -169,7 +169,7 @@ const Home = () => {
             } else {
                 setTitleVisible(false);
             }
-        }, { threshold: 0.3 });
+        }, { threshold: 0.2 });
 
         if (titleRef.current) observer.observe(titleRef.current);
         return () => observer.disconnect();

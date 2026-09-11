@@ -4,7 +4,13 @@ import contactVideo from '../assets/video/contact.mp4';
 
 const Contact = () => {
     const sectionRef = useRef(null);
+    const trackRef = useRef(null);
     const [progress, setProgress] = useState(0);
+    const [, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -71,7 +77,10 @@ const Contact = () => {
     };
 
     const getTextStyle = () => {
-        const pPct = Math.min(100, Math.max(0, progress * 100));
+        let pColor = progress / 0.65;
+        if (pColor > 1) pColor = 1;
+        if (pColor < 0) pColor = 0;
+        const pPct = pColor * 100;
 
         return {
             backgroundImage: `linear-gradient(90deg, #111 ${pPct}%, #ccc ${pPct}%)`,
@@ -83,10 +92,19 @@ const Contact = () => {
     };
 
     const getTrackTransform = () => {
-        if (windowWidth <= 480) {
-            return `translateX(calc(5vw - ${progress * 190}vw))`;
-        } else if (windowWidth <= 768) {
-            return `translateX(calc(8vw - ${progress * 140}vw))`;
+        if (windowWidth <= 768) {
+            if (trackRef.current) {
+                const trackWidth = trackRef.current.scrollWidth;
+                const vw = windowWidth;
+                const startX = vw <= 480 ? vw * 0.05 : vw * 0.08;
+                // 우측 여백이 정확히 5%가 되는 위치 (오른쪽 끝 = 화면의 95%)
+                const endX = (vw * 0.95) - trackWidth;
+                const dist = Math.max(0, startX - endX);
+                const currentX = startX - (progress * dist);
+                return `translateX(${currentX}px)`;
+            }
+            const fallbackDist = windowWidth <= 480 ? 95 : 85;
+            return `translateX(calc(${windowWidth <= 480 ? '5vw' : '8vw'} - ${progress * fallbackDist}vw))`;
         }
         return `translateX(calc(10vw - ${progress * 100}vw))`;
     };
@@ -107,6 +125,7 @@ const Contact = () => {
             <section id="contact" className="contact-section" ref={sectionRef} data-theme="gray">
                 <div className="contact-sticky">
                     <div
+                        ref={trackRef}
                         className="contact-track"
                         style={{ transform: getTrackTransform() }}
                     >

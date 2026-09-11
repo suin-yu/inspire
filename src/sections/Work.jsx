@@ -335,7 +335,13 @@ const Work = () => {
     // Actually I need to keep the full context if I'm replacing the whole component or block.
     // I will use previous context.
     const sectionRef = useRef(null);
+    const trackRef = useRef(null);
     const [progress, setProgress] = useState(0);
+    const [, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -405,7 +411,10 @@ const Work = () => {
     };
 
     const getTextStyle = () => {
-        const pPct = Math.min(100, Math.max(0, progress * 100));
+        let pColor = progress / 0.65;
+        if (pColor > 1) pColor = 1;
+        if (pColor < 0) pColor = 0;
+        const pPct = pColor * 100;
 
         return {
             backgroundImage: `linear-gradient(90deg, #fff ${pPct}%, #333 ${pPct}%)`,
@@ -417,10 +426,19 @@ const Work = () => {
     };
 
     const getTrackTransform = () => {
-        if (windowWidth <= 480) {
-            return `translateX(calc(5vw - ${progress * 135}vw))`;
-        } else if (windowWidth <= 768) {
-            return `translateX(calc(8vw - ${progress * 115}vw))`;
+        if (windowWidth <= 768) {
+            if (trackRef.current) {
+                const trackWidth = trackRef.current.scrollWidth;
+                const vw = windowWidth;
+                const startX = vw <= 480 ? vw * 0.05 : vw * 0.08;
+                // 우측 여백이 정확히 5%가 되는 위치 (오른쪽 끝 = 화면의 95%)
+                const endX = (vw * 0.95) - trackWidth;
+                const dist = Math.max(0, startX - endX);
+                const currentX = startX - (progress * dist);
+                return `translateX(${currentX}px)`;
+            }
+            const fallbackDist = windowWidth <= 480 ? 95 : 85;
+            return `translateX(calc(${windowWidth <= 480 ? '5vw' : '8vw'} - ${progress * fallbackDist}vw))`;
         }
         return `translateX(calc(10vw - ${progress * 83}vw))`;
     };
@@ -431,6 +449,7 @@ const Work = () => {
             <section id="work" className="work-main-section" ref={sectionRef} data-theme="dark">
                 <div className="work-main-sticky">
                     <div
+                        ref={trackRef}
                         className="work-main-track"
                         style={{ transform: getTrackTransform() }}
                     >

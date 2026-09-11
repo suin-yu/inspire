@@ -124,6 +124,10 @@
 }
 
 @media (max-width: 768px) {
+    .skill-section {
+        height: 160vh;
+    }
+
     .skill-section .hero-text-wrap {
         font-size: 85px;
         gap: 20px;

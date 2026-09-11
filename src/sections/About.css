@@ -143,6 +143,10 @@
 }
 
 @media (max-width: 768px) {
+    .about-section {
+        height: 160vh;
+    }
+
     .hero-text-wrap {
         font-size: 85px;
         gap: 20px;

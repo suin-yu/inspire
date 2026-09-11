@@ -124,6 +124,10 @@
 }
 
 @media (max-width: 768px) {
+    .contact-section {
+        height: 160vh;
+    }
+
     .contact-section .hero-text-wrap {
         font-size: 85px;
         gap: 20px;
