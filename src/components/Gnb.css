@@ -1,0 +1,249 @@
+.gnb {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    z-index: 1000;
+    /* Ensure it sits on top of everything */
+    color: #fff;
+    /* Default text color */
+    box-sizing: border-box;
+    transition: color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 100;
+    opacity: 1;
+    visibility: visible;
+}
+
+.gnb.gray {
+    color: #111;
+}
+
+.gnb.gray .gnb-menu li {
+    font-weight: 400;
+}
+
+.gnb.orange {
+    color: #fff;
+}
+
+.gnb.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.gnb-logo {
+    font-family: 'AtheneVoyage', serif;
+    font-size: 26px;
+    font-weight: 300;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: inherit;
+    transition: color 0.3s ease;
+    z-index: 1002;
+    position: relative;
+}
+
+.gnb-menu {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.gnb-menu li {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+    text-transform: capitalize;
+    position: relative;
+}
+
+.gnb-menu li:hover {
+    opacity: 1;
+}
+
+.gnb-menu li.active {
+    opacity: 1;
+    font-weight: 300;
+}
+
+.gnb-menu li.active::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #FB6C1C;
+    /* Default for Dark BG (#111) */
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gnb.orange .gnb-menu li.active::after {
+    background-color: #111;
+}
+
+.gnb.dark .gnb-menu li.active::after {
+    background-color: #FB6C1C;
+}
+
+/* Hamburger Button Hidden on Desktop */
+.hamburger-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1002;
+    width: 44px;
+    height: 44px;
+    position: relative;
+    outline: none;
+    color: inherit;
+    transition: color 0.3s ease;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 메뉴 열림 상태일 때 로고와 닫기(X) 버튼은 항상 어두운 배경 위에서 잘 보이도록 흰색 고정 */
+.gnb.open .gnb-logo,
+.gnb.open .hamburger-btn {
+    color: #fff !important;
+}
+
+.hamburger-line {
+    display: block;
+    position: absolute;
+    left: 8px;
+    width: 28px;
+    height: 2.5px;
+    background-color: currentColor;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease, background-color 0.3s ease;
+}
+
+.hamburger-line:nth-child(1) {
+    top: 12px;
+}
+
+.hamburger-line:nth-child(2) {
+    top: 20px;
+}
+
+.hamburger-line:nth-child(3) {
+    top: 28px;
+}
+
+/* Active State -> 완벽한 대칭 'X' 아이콘으로 변환 */
+.hamburger-btn.active .hamburger-line:nth-child(1) {
+    top: 20px;
+    transform: rotate(45deg);
+}
+
+.hamburger-btn.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.active .hamburger-line:nth-child(3) {
+    top: 20px;
+    transform: rotate(-45deg);
+}
+
+/* Mobile Menu Overlay */
+.gnb-mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background-color: rgba(17, 17, 17, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.gnb-mobile-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+}
+
+.mobile-menu-list li {
+    font-family: 'Poppins', 'Pretendard', sans-serif;
+    font-size: 38px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-menu-list li.active,
+.mobile-menu-list li:hover {
+    color: #FB6C1C;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .gnb {
+        padding: 0 20px;
+        height: 64px;
+        top: 10px;
+    }
+
+    .gnb-logo {
+        font-size: 24px;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .hamburger-btn {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .gnb {
+        padding: 0 16px;
+    }
+
+    .gnb-logo {
+        font-size: 22px;
+    }
+
+    .mobile-menu-list {
+        gap: 30px;
+    }
+
+    .mobile-menu-list li {
+        font-size: 32px;
+    }
+}

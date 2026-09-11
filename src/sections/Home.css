@@ -1,0 +1,838 @@
+.home-section {
+    position: relative;
+    width: 100%;
+    height: auto;
+    height: auto;
+    overflow: visible;
+    /* CRITICAL: Ensure sticky works by allowing overflow */
+}
+
+.home-intro {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background-color: #111111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    /* Ensure stacking context */
+}
+
+/* Scroll Container */
+.home-design-2 {
+    width: 100%;
+    height: 300vh;
+    /* Reduced height for faster animation */
+    background-color: #EAEAEA;
+    /* Initial BG */
+    position: relative;
+}
+
+/* Pinned Viewport */
+.sticky-wrapper {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 10;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    /* Force sticky layer */
+
+    overflow: hidden;
+    /* Changed from hidden to visible to prevent cutting off content in some browsers */
+    /* BG and transition handled via inline JS or class */
+    z-index: 10;
+    will-change: transform;
+    /* Hint for Edge compositor */
+}
+
+/* Triggers for GNB matches 50/50 split of the container */
+.theme-trigger {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.trigger-gray {
+    top: 0;
+}
+
+.trigger-orange {
+    top: 50%;
+}
+
+.design-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* gap removed for JS animation control */
+    flex-wrap: wrap;
+    transition: opacity 0.5s;
+    width: 100%;
+    /* Ensure full width */
+    max-width: 100%;
+}
+
+.design-text {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 150px;
+    color: #111;
+    line-height: 1;
+    letter-spacing: -2px;
+    flex-shrink: 0;
+    /* Prevent shrinking in Edge */
+    white-space: nowrap;
+    /* Prevent random wrapping */
+    display: inline-block;
+    will-change: transform, opacity;
+
+}
+
+.design-img {
+    height: 140px;
+    width: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    flex-shrink: 0;
+    /* Prevent shrinking in Edge */
+}
+
+@media (max-width: 1024px) {
+    .design-text {
+        font-size: 80px;
+    }
+
+    .design-img {
+        height: 80px;
+    }
+
+    /* 4 lines filling background tightly with larger text */
+    .marquee-text {
+        font-size: 32vh;
+        line-height: 0.8;
+        letter-spacing: -5px;
+    }
+
+    .text-background .marquee-row:nth-child(n+5) {
+        display: none;
+    }
+
+    .scene {
+        transform: scale(0.02);
+        /* Reduced from 0.6 */
+    }
+}
+
+@media (max-width: 768px) {
+    .sticky-wrapper {
+        padding: 0 16px;
+        box-sizing: border-box;
+    }
+
+    .design-text {
+        font-size: clamp(32px, 8.5vw, 56px);
+    }
+
+    .design-img {
+        height: clamp(36px, 9vw, 62px);
+    }
+}
+
+@media (max-width: 480px) {
+    .sticky-wrapper {
+        padding: 0 12px;
+        box-sizing: border-box;
+    }
+
+    .design-text {
+        font-size: clamp(26px, 9.2vw, 42px);
+    }
+
+    .design-img {
+        height: clamp(30px, 10.5vw, 46px);
+    }
+}
+
+/* Intro Styles (Marquee & Carousel) */
+.text-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+    pointer-events: none;
+    gap: 20px;
+}
+
+.marquee-row {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.marquee-track {
+    display: flex;
+    white-space: nowrap;
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.marquee-text {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13.4vw;
+    font-weight: 500;
+    color: #fff;
+    margin-right: 40px;
+    line-height: 0.8;
+}
+
+/* Hide extra rows on desktop to preserve original design */
+@media (min-width: 1025px) {
+    .marquee-row:nth-child(n+5) {
+        display: none;
+    }
+}
+
+/* Mobile ONLY: 3x enlarged font size & reduced lines (4 giant lines filling screen) */
+@media (max-width: 768px) {
+    .text-background {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .marquee-row {
+        flex-shrink: 0;
+        display: flex !important;
+    }
+
+    .marquee-row:nth-child(n+5) {
+        display: none !important;
+    }
+
+    .marquee-text {
+        font-size: 38vw;
+        font-weight: 700;
+        line-height: 0.78;
+        letter-spacing: -2px;
+        margin-right: 30px;
+    }
+}
+
+/* Animation Defs */
+.animate-left {
+    animation: scrollLeft 160s linear infinite;
+    opacity: 0.2;
+}
+
+.animate-right {
+    animation: scrollRight 160s linear infinite;
+    opacity: 0.05;
+}
+
+.text-background .marquee-row:last-child .marquee-track {
+    opacity: 0.09;
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scrollRight {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* 3D Scene - Hexagon Carousel */
+.scene {
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    z-index: 10;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* Animate the tilt (oblique rotation) left and right */
+    animation: swingScene 8s ease-in-out infinite alternate;
+}
+
+@keyframes swingScene {
+    0% {
+        transform: rotateX(-15deg) rotateZ(-10deg);
+    }
+
+    100% {
+        transform: rotateX(-15deg) rotateZ(10deg);
+    }
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    animation: rotateCarousel 20s infinite linear;
+}
+
+/* 
+   RESIZED: Width 400px, Height 350px per user request
+*/
+.carousel__face {
+    position: absolute;
+    width: 360px;
+    height: 315px;
+    left: 50%;
+    top: 50%;
+    margin-left: -180px;
+    margin-top: -157.5px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+.carousel__face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.carousel__face:hover img {
+    opacity: 1;
+}
+
+/* Hexagon Geometry (6 sides) */
+.carousel__face:nth-child(1) {
+    transform: rotateY(0deg) translateZ(312px);
+}
+
+.carousel__face:nth-child(2) {
+    transform: rotateY(60deg) translateZ(312px);
+}
+
+.carousel__face:nth-child(3) {
+    transform: rotateY(120deg) translateZ(312px);
+}
+
+.carousel__face:nth-child(4) {
+    transform: rotateY(180deg) translateZ(312px);
+}
+
+.carousel__face:nth-child(5) {
+    transform: rotateY(240deg) translateZ(312px);
+}
+
+.carousel__face:nth-child(6) {
+    transform: rotateY(300deg) translateZ(312px);
+}
+
+@keyframes rotateCarousel {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(-360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .scene {
+        width: 200px;
+        height: 300px;
+        transform: scale(0.65);
+    }
+
+    .carousel__face {
+        width: 216px;
+        height: 189px;
+        margin-left: -108px;
+        margin-top: -94.5px;
+    }
+
+    .carousel__face:nth-child(1) {
+        transform: rotateY(0deg) translateZ(187px);
+    }
+
+    .carousel__face:nth-child(2) {
+        transform: rotateY(60deg) translateZ(187px);
+    }
+
+    .carousel__face:nth-child(3) {
+        transform: rotateY(120deg) translateZ(187px);
+    }
+
+    .carousel__face:nth-child(4) {
+        transform: rotateY(180deg) translateZ(187px);
+    }
+
+    .carousel__face:nth-child(5) {
+        transform: rotateY(240deg) translateZ(187px);
+    }
+
+    .carousel__face:nth-child(6) {
+        transform: rotateY(300deg) translateZ(187px);
+    }
+}
+
+@media (max-width: 480px) {
+    .scene {
+        transform: scale(0.55);
+    }
+}
+
+/* Work Section (Home Design 4) */
+.home-work {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: #FB6C1C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 150px 5%;
+    /* Increased from 100px */
+    box-sizing: border-box;
+    overflow: visible;
+    /* Prevent clipping */
+}
+
+.work-container {
+    display: flex;
+    width: 100%;
+    max-width: 1600px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Left Content */
+.work-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transform: translateY(-150px);
+    /* Move up 50px */
+    min-width: 0;
+    /* Fix flex issue */
+}
+
+.work-title {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 64px;
+    letter-spacing: -1.4px;
+    line-height: 1.2;
+    word-break: keep-all;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.reveal-text {
+    color: transparent;
+    background-image: linear-gradient(to right, #fff 50%, #E05000 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    width: fit-content;
+    transition: background-position 2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.work-title.visible .reveal-text {
+    background-position: 0 0;
+}
+
+.reveal-text:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.reveal-text:nth-child(2) {
+    transition-delay: 0.3s;
+}
+
+.reveal-text:nth-child(3) {
+    transition-delay: 0.5s;
+}
+
+.reveal-text:nth-child(4) {
+    transition-delay: 0.7s;
+}
+
+.work-desc-box {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    transform: translate(4px, -30px);
+    /* Combined and increased vertical offset */
+}
+
+.work-line {
+    width: 2px;
+    height: 48px;
+    background-color: #111;
+    flex-shrink: 0;
+}
+
+.work-desc {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #111;
+    line-height: 1.4;
+    margin: 0;
+    /* Ensuring no external margin affects alignment */
+}
+
+/* Right Content (Cards) */
+.work-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Center vertically */
+    position: relative;
+    /* Height removed for natural flow */
+    perspective: 1000px;
+    margin-right: -5%;
+    /* Add spacing from edge */
+    min-width: 0;
+    /* Fix flex issue */
+    z-index: 1;
+}
+
+.card-stack {
+    position: relative;
+    width: 480px;
+    /* Reduced from 580px */
+    height: 480px;
+    margin-top: 100px;
+    /* More offset for fanning */
+    margin-right: 100px;
+    /* Adjusted offset */
+}
+
+.work-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #F8F8F8;
+    border-radius: 32px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    /* Reduced padding to pull number up */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Changed from space-between */
+    transition: all 0.8s cubic-bezier(0.25, 1, 1, 1);
+    will-change: transform, opacity;
+}
+
+.work-card-header {
+    flex: 1;
+    /* Take available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Push Num to top, Title to bottom */
+    margin-bottom: 20px;
+    /* Reduced gap */
+    /* Gap closer to image */
+    gap: 0;
+}
+
+.work-card-num {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #B1B1B1;
+}
+
+.work-card-title {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 50px;
+    font-weight: 500;
+    color: #111;
+    line-height: 1;
+    letter-spacing: -3px;
+}
+
+.card-img-box {
+    width: 100%;
+    height: 250px;
+    /* Reduced height for 480px card */
+    /* Adjusted density for 580px height */
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #ddd;
+    position: relative;
+    margin-top: 0;
+    /* Handled by header margin */
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Dynamic positions for rotation 
+   User wants cards fanning out to the right.
+   Pos 0: Front 
+   Pos 1: Behind & Right-Up
+   Pos 2: Behind & Right-Up
+   Pos 3: Behind & Right-Up
+*/
+.work-card.card-pos-0 {
+    z-index: 10;
+    transform: translateX(0) translateY(0) scale(1);
+    opacity: 1;
+}
+
+.work-card.card-pos-1 {
+    z-index: 9;
+    transform: translateX(50px) translateY(-75px) scale(0.98);
+    /* Increased Y */
+    opacity: 1;
+}
+
+.work-card.card-pos-2 {
+    z-index: 8;
+    transform: translateX(100px) translateY(-150px) scale(0.96);
+    /* Increased Y */
+    opacity: 1;
+}
+
+.work-card.card-pos-3 {
+    z-index: 7;
+    transform: translateX(150px) translateY(-225px) scale(0.94);
+    /* Increased Y */
+    opacity: 1;
+}
+
+@media (max-width: 1280px) {
+    .work-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .work-left {
+        text-align: center;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    .work-title {
+        font-size: 50px;
+    }
+
+    .work-desc-box {
+        justify-content: center;
+    }
+
+    .card-stack {
+        width: 350px;
+        height: 450px;
+    }
+
+    .card-title {
+        font-size: 40px;
+    }
+
+    .work-card.card-pos-1 {
+        transform: translateX(40px) translateY(-40px) scale(0.95);
+    }
+
+    .work-card.card-pos-2 {
+        transform: translateX(80px) translateY(-80px) scale(0.9);
+    }
+
+    .work-card.card-pos-3 {
+        transform: translateX(120px) translateY(-120px) scale(0.85);
+    }
+}
+
+@media (max-width: 768px) {
+    .home-work {
+        padding: 80px 16px;
+    }
+
+    .work-left {
+        transform: translateY(0);
+        margin-bottom: 36px;
+    }
+
+    .work-title {
+        font-size: clamp(30px, 8.2vw, 48px);
+        letter-spacing: -1.2px;
+        line-height: 1.18;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .reveal-text {
+        max-width: 100%;
+        word-break: keep-all;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .work-desc-box {
+        transform: none;
+        margin-top: 24px;
+        gap: 16px;
+        align-items: stretch;
+    }
+
+    .work-line {
+        height: auto;
+        align-self: stretch;
+        width: 3px;
+        background-color: #111;
+        flex-shrink: 0;
+        border-radius: 2px;
+    }
+
+    .work-desc {
+        font-size: 26px;
+        line-height: 1.4;
+        text-align: left;
+        margin: 0;
+    }
+
+    .work-right {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .card-stack {
+        width: 100%;
+        max-width: 320px;
+        height: 400px;
+        margin-top: 30px;
+        margin-right: 0;
+    }
+
+    .work-card {
+        padding: 24px;
+        border-radius: 24px;
+    }
+
+    .work-card-title {
+        font-size: 34px;
+        letter-spacing: -1.5px;
+    }
+
+    .card-img-box {
+        height: 210px;
+    }
+
+    .work-card.card-pos-1 {
+        transform: translateX(12px) translateY(-18px) scale(0.95);
+    }
+
+    .work-card.card-pos-2 {
+        transform: translateX(24px) translateY(-36px) scale(0.9);
+    }
+
+    .work-card.card-pos-3 {
+        transform: translateX(36px) translateY(-54px) scale(0.85);
+    }
+}
+
+@media (max-width: 480px) {
+    .work-title {
+        font-size: clamp(38px, 9.5vw, 48px);
+        letter-spacing: -1.2px;
+    }
+
+    .work-desc {
+        font-size: 22px;
+    }
+
+    .work-line {
+        height: auto;
+        align-self: stretch;
+    }
+
+    .card-stack {
+        max-width: 290px;
+        height: 360px;
+    }
+
+    .work-card-title {
+        font-size: 30px;
+    }
+
+    .card-img-box {
+        height: 180px;
+    }
+}

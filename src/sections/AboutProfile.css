@@ -1,0 +1,483 @@
+.about-profile-section {
+    width: 100%;
+    background-color: #111;
+    /* Dark Theme */
+    color: #fff;
+    position: relative;
+    padding: 100px 0 0 0;
+    /* Removed extra bottom padding, using spacer instead */
+}
+
+.profile-container {
+    display: flex;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 5vw;
+    box-sizing: border-box;
+}
+
+/* Left Side Styling */
+.profile-left {
+    width: 45%;
+    position: relative;
+}
+
+.sticky-content {
+    position: sticky;
+    top: 20vh;
+    /* Stick slightly below the top */
+    display: flex;
+    flex-direction: row;
+    /* Side by side */
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.profile-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 96px;
+    font-weight: 400;
+    letter-spacing: -3px;
+    line-height: 1;
+    margin-bottom: 0;
+    flex-shrink: 0;
+    z-index: -1;
+    /* Text on top */
+    position: relative;
+    left: 20px;
+}
+
+.text-orange {
+    color: #FB6C1C;
+}
+
+.text-gray {
+    color: #444;
+    /* Dark gray */
+}
+
+.profile-img-box {
+    width: 850px;
+    height: auto;
+    /* Overlap slightly */
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: -10%;
+    left: 7.4%;
+    z-index: 1;
+    /* Image behind text */
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Right Side Styling */
+.profile-right {
+    width: 55%;
+    padding-left: 50px;
+    box-sizing: border-box;
+}
+
+/* 오른쪽 리스트 */
+.career-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+}
+
+/* 마지막 엔딩 여백 */
+/* 마지막 엔딩 여백 optimized */
+.career-end-spacer {
+    height: 15vh;
+    width: 100%;
+}
+
+
+
+
+.career-card {
+    background-color: #fff;
+    color: #111;
+    border-radius: 30px;
+    padding: 60px 60px;
+    /* Spacious padding */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    z-index: 6;
+}
+
+.card-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.card-period {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: #111;
+    letter-spacing: -1px;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    margin: 0;
+}
+
+/* The number span inside period */
+.card-period .num {
+    font-size: 100px;
+    font-weight: 800;
+    letter-spacing: -3px;
+    margin-right: 5px;
+    line-height: 1;
+    position: relative;
+    top: 5px;
+}
+
+.card-header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: -5px;
+    text-align: right;
+    flex-shrink: 0;
+    padding-bottom: 8px;
+}
+
+.card-date {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+}
+
+.card-sub {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+}
+
+.card-body {
+    font-family: 'Pretendard', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-body-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111;
+    margin: 0;
+    line-height: 1.4;
+    word-break: keep-all;
+    letter-spacing: -0.8px;
+}
+
+.card-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+.card-details li {
+    font-size: 17px;
+    color: #888;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+}
+
+/* ORANGE CARD STYLES */
+.orange-card {
+    background-color: #FB6C1C;
+    color: #fff;
+}
+
+.orange-header {
+    border-bottom: none;
+    margin-bottom: 0;
+    align-items: center;
+    /* Center align horizontally adjacent items */
+}
+
+.orange-card .card-header-right {
+    padding-bottom: 0;
+    /* Remove padding to ensure true center alignment */
+}
+
+.card-category {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 50px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1;
+}
+
+.orange-right {
+    text-align: right;
+    color: #fff;
+}
+
+.orange-date,
+.orange-sub {
+    color: #fff;
+    font-weight: 500;
+}
+
+.orange-title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -1px;
+    word-break: keep-all;
+    color: #111;
+    margin: 0;
+}
+
+.orange-card .card-body {
+    gap: 10px;
+}
+
+.orange-details li {
+    color: #333;
+    font-weight: 300;
+}
+
+.orange-title,
+.edu-title {
+    color: #111;
+}
+
+/* Education Blocks */
+.edu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.edu-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edu-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+    letter-spacing: -1px;
+    word-break: keep-all;
+}
+
+@media (max-width: 1200px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile-left,
+    .profile-right {
+        width: 100%;
+        padding: 0;
+    }
+
+    .sticky-content {
+        position: relative;
+        top: 0;
+        margin-bottom: 50px;
+    }
+
+    .profile-title {
+        font-size: 60px;
+    }
+
+    .profile-right {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-profile-section {
+        padding: 45px 0 0 0;
+        overflow: hidden;
+    }
+
+    .profile-container {
+        padding: 0 16px;
+    }
+
+    .sticky-content {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        height: 360px;
+        margin-bottom: 16px;
+        overflow: visible;
+    }
+
+    .profile-title {
+        font-size: clamp(38px, 9.5vw, 52px);
+        font-weight: 600;
+        letter-spacing: -2px;
+        line-height: 1.04;
+        text-align: left;
+        margin-bottom: 0;
+        position: relative;
+        left: 0;
+        padding-left: 6px;
+        z-index: 3;
+        flex-shrink: 0;
+    }
+
+    .profile-title .text-gray {
+        color: #888;
+    }
+
+    /* 사진 우측정렬: 상단 머리 잘림 방지를 위해 top: 15px 여유 공간 확보 */
+    .profile-img-box {
+        position: absolute;
+        width: 580px;
+        max-width: none;
+        top: 15px;
+        right: -120px;
+        left: auto;
+        transform: none;
+        z-index: 1;
+        pointer-events: none;
+        margin: 0;
+    }
+
+    .career-list {
+        gap: 24px;
+    }
+
+    .career-card {
+        padding: 32px 20px;
+        border-radius: 24px;
+        gap: 22px;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .card-period {
+        font-size: 32px;
+    }
+
+    .card-period .num {
+        font-size: 60px;
+        top: 2px;
+        margin-right: 4px;
+    }
+
+    .card-header-right {
+        align-items: flex-start;
+        text-align: left;
+        padding-bottom: 0;
+    }
+
+    .card-date,
+    .card-sub {
+        font-size: 18px;
+    }
+
+    .card-body-title,
+    .orange-title,
+    .edu-title {
+        font-size: 20px;
+    }
+
+    .card-details li {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .card-category {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-profile-section {
+        padding: 35px 0 0 0;
+    }
+
+    .sticky-content {
+        height: 340px;
+        margin-bottom: 12px;
+    }
+
+    .profile-title {
+        font-size: clamp(34px, 8.8vw, 42px);
+        letter-spacing: -1.5px;
+        line-height: 1.04;
+        font-weight: 600;
+        padding-left: 2px;
+    }
+
+    .profile-img-box {
+        width: 520px;
+        top: 12px;
+        right: -105px;
+        transform: none;
+    }
+
+    .career-card {
+        padding: 26px 18px;
+        border-radius: 18px;
+    }
+
+    .card-period {
+        font-size: 28px;
+    }
+
+    .card-period .num {
+        font-size: 50px;
+    }
+
+    .card-date,
+    .card-sub {
+        font-size: 17px;
+    }
+
+    .card-body-title,
+    .orange-title,
+    .edu-title {
+        font-size: 18px;
+    }
+
+    .card-details li {
+        font-size: 15px;
+        line-height: 1.45;
+    }
+
+    .card-category {
+        font-size: 36px;
+    }
+}
