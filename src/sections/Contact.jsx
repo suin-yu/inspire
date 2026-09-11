@@ -128,8 +128,8 @@ const Contact = () => {
                             </span>
                         </div>
                     </div>
-                </div> >
-            </section >
+                </div>
+            </section>
 
             <div className="contact-details" data-theme="gray">
                 <video src={contactVideo} autoPlay loop muted playsInline className="contact-video" />

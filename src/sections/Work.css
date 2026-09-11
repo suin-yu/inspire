@@ -385,17 +385,7 @@
 
 @media (max-width: 768px) {
     .work-image-overlay {
-        position: relative;
-        width: 100%;
-        top: 0;
-        right: 0;
-        transform: none;
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.9);
-        /* Fallback for mobile readability */
-        border-radius: 12px;
-        margin-top: -20px;
-        /* Overlap slightly or just stack */
+        display: none !important;
     }
 }
 
@@ -474,6 +464,35 @@
         box-sizing: border-box;
     }
 
+    /* 모바일 WORK 작품 등장 효과(애니메이션) 완전 제거 -> 즉시 표시 */
+    .work-gallery-image-wrapper {
+        transform: none !important;
+        transition: none !important;
+        margin-bottom: 1.2rem;
+    }
+
+    .work-gallery-item.animate .work-gallery-image-wrapper {
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .work-gallery-details {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .work-gallery-item.animate .work-gallery-details {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
     .work-gallery-header {
         font-size: 3rem;
         flex-direction: column;
@@ -483,19 +502,12 @@
 
     .work-gallery-title-left,
     .work-gallery-title-right {
-        transform: translateY(0);
+        transform: none !important;
+        transition: none !important;
     }
 
     .work-gallery-image {
         border-radius: 12px;
-    }
-
-    .work-gallery-details {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.8rem;
-        width: 100%;
-        box-sizing: border-box;
     }
 
     .work-gallery-text-left {

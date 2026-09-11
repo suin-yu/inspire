@@ -29,10 +29,25 @@ import readMoreArrow from '../assets/img/readMore2.png';
 
 
 const WorkGalleryHeader = ({ leftText = "UXUI", rightText = "Design", marginTop, marginBottom, isClone }) => {
-    const [isVisible, setIsVisible] = useState(false);
+    const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+    const [isVisible, setIsVisible] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
     const ref = useRef(null);
 
     useEffect(() => {
+        const checkMobile = () => {
+            const mobile = window.innerWidth <= 768;
+            setIsMobile(mobile);
+            if (mobile) setIsVisible(true);
+        };
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    useEffect(() => {
+        if (isMobile) {
+            setIsVisible(true);
+            return;
+        }
         const observer = new IntersectionObserver(
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
@@ -41,7 +56,7 @@ const WorkGalleryHeader = ({ leftText = "UXUI", rightText = "Design", marginTop,
         );
         if (ref.current) observer.observe(ref.current);
         return () => observer.disconnect();
-    }, []);
+    }, [isMobile]);
 
     return (
         <div
@@ -56,16 +71,19 @@ const WorkGalleryHeader = ({ leftText = "UXUI", rightText = "Design", marginTop,
 };
 
 const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBottom, overlay, noButtons, layout, overlayPosition, rightText, align, link, uxLink, siteLink, conceptLink, conceptText, isClone, hoverImage, isPromotion }) => {
-    const [isVisible, setIsVisible] = useState(false);
+    const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+    const [isVisible, setIsVisible] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
     const ref = useRef(null);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isConceptOpen, setIsConceptOpen] = useState(false);
     const [isHoverOpen, setIsHoverOpen] = useState(false);
 
-    const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
-
     useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+        const checkMobile = () => {
+            const mobile = window.innerWidth <= 768;
+            setIsMobile(mobile);
+            if (mobile) setIsVisible(true);
+        };
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
@@ -74,6 +92,10 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
     const slides = images || (image ? [image] : []);
 
     useEffect(() => {
+        if (isMobile) {
+            setIsVisible(true);
+            return;
+        }
         const observer = new IntersectionObserver(
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
@@ -82,7 +104,7 @@ const WorkGalleryItem = ({ image, images, video, title, sub, marginTop, marginBo
         );
         if (ref.current) observer.observe(ref.current);
         return () => observer.disconnect();
-    }, []);
+    }, [isMobile]);
 
     // Slideshow Effect
     useEffect(() => {
