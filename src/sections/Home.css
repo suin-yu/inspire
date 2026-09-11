@@ -390,79 +390,79 @@
 
 @media (max-width: 768px) {
     .scene {
-        width: 160px;
-        height: 220px;
+        width: 240px;
+        height: 330px;
     }
 
     .carousel__face {
-        width: 140px;
-        height: 122px;
-        margin-left: -70px;
-        margin-top: -61px;
-        border-radius: 8px;
+        width: 210px;
+        height: 183px;
+        margin-left: -105px;
+        margin-top: -91.5px;
+        border-radius: 12px;
     }
 
     .carousel__face:nth-child(1) {
-        transform: rotateY(0deg) translateZ(121px);
+        transform: rotateY(0deg) translateZ(182px);
     }
 
     .carousel__face:nth-child(2) {
-        transform: rotateY(60deg) translateZ(121px);
+        transform: rotateY(60deg) translateZ(182px);
     }
 
     .carousel__face:nth-child(3) {
-        transform: rotateY(120deg) translateZ(121px);
+        transform: rotateY(120deg) translateZ(182px);
     }
 
     .carousel__face:nth-child(4) {
-        transform: rotateY(180deg) translateZ(121px);
+        transform: rotateY(180deg) translateZ(182px);
     }
 
     .carousel__face:nth-child(5) {
-        transform: rotateY(240deg) translateZ(121px);
+        transform: rotateY(240deg) translateZ(182px);
     }
 
     .carousel__face:nth-child(6) {
-        transform: rotateY(300deg) translateZ(121px);
+        transform: rotateY(300deg) translateZ(182px);
     }
 }
 
 @media (max-width: 480px) {
     .scene {
-        width: 130px;
-        height: 180px;
+        width: 195px;
+        height: 270px;
     }
 
     .carousel__face {
-        width: 114px;
-        height: 100px;
-        margin-left: -57px;
-        margin-top: -50px;
-        border-radius: 6px;
+        width: 170px;
+        height: 150px;
+        margin-left: -85px;
+        margin-top: -75px;
+        border-radius: 10px;
     }
 
     .carousel__face:nth-child(1) {
-        transform: rotateY(0deg) translateZ(99px);
+        transform: rotateY(0deg) translateZ(147px);
     }
 
     .carousel__face:nth-child(2) {
-        transform: rotateY(60deg) translateZ(99px);
+        transform: rotateY(60deg) translateZ(147px);
     }
 
     .carousel__face:nth-child(3) {
-        transform: rotateY(120deg) translateZ(99px);
+        transform: rotateY(120deg) translateZ(147px);
     }
 
     .carousel__face:nth-child(4) {
-        transform: rotateY(180deg) translateZ(99px);
+        transform: rotateY(180deg) translateZ(147px);
     }
 
     .carousel__face:nth-child(5) {
-        transform: rotateY(240deg) translateZ(99px);
+        transform: rotateY(240deg) translateZ(147px);
     }
 
     .carousel__face:nth-child(6) {
-        transform: rotateY(300deg) translateZ(99px);
+        transform: rotateY(300deg) translateZ(147px);
     }
 }
 
