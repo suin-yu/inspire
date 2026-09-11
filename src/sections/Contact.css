@@ -21,10 +21,12 @@
     top: 0;
     width: 100%;
     height: 100vh;
+    height: 100dvh;
     overflow: hidden;
     display: flex;
     align-items: center;
     background-color: #eaeaea;
+    touch-action: pan-y;
 }
 
 .contact-track {
@@ -32,6 +34,7 @@
     align-items: center;
     white-space: nowrap;
     will-change: transform;
+    touch-action: pan-y;
 }
 
 .contact-section .hero-text-wrap {

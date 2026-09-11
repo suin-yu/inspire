@@ -5,31 +5,45 @@ import contactVideo from '../assets/video/contact.mp4';
 const Contact = () => {
     const sectionRef = useRef(null);
     const trackRef = useRef(null);
+    const trackWidthRef = useRef(0);
     const [progress, setProgress] = useState(0);
-    const [, setMounted] = useState(false);
+
+    const updateTrackWidth = () => {
+        if (trackRef.current) {
+            trackWidthRef.current = trackRef.current.scrollWidth;
+        }
+    };
 
     useEffect(() => {
-        setMounted(true);
+        updateTrackWidth();
+        window.addEventListener('resize', updateTrackWidth);
+        return () => window.removeEventListener('resize', updateTrackWidth);
     }, []);
 
     useEffect(() => {
+        let ticking = false;
         const handleScroll = () => {
-            if (!sectionRef.current) return;
-            const element = sectionRef.current;
-            const { top, height } = element.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    if (sectionRef.current) {
+                        const { top, height } = sectionRef.current.getBoundingClientRect();
+                        const viewportHeight = window.innerHeight;
+                        const scrollLength = height - viewportHeight;
+                        const scrolled = -top;
 
-            const scrollLength = height - viewportHeight;
-            const scrolled = -top;
+                        let p = scrolled / scrollLength;
+                        if (p < 0) p = 0;
+                        if (p > 1) p = 1;
 
-            let p = scrolled / scrollLength;
-            if (p < 0) p = 0;
-            if (p > 1) p = 1;
-
-            setProgress(p);
+                        setProgress(p);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         handleScroll();
 
         return () => window.removeEventListener('scroll', handleScroll);
@@ -93,8 +107,8 @@ const Contact = () => {
 
     const getTrackTransform = () => {
         if (windowWidth <= 768) {
-            if (trackRef.current) {
-                const trackWidth = trackRef.current.scrollWidth;
+            const trackWidth = trackWidthRef.current || (trackRef.current ? trackRef.current.scrollWidth : 0);
+            if (trackWidth > 0) {
                 const vw = windowWidth;
                 const startX = vw <= 480 ? vw * 0.05 : vw * 0.08;
                 // 우측 여백이 정확히 5%가 되는 위치 (오른쪽 끝 = 화면의 95%)

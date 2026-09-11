@@ -39,30 +39,34 @@ const Home = () => {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
+        let ticking = false;
         const handleScroll = () => {
-            if (!containerRef.current) return;
-            const { top, height } = containerRef.current.getBoundingClientRect();
-            const winHeight = window.innerHeight;
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    if (containerRef.current) {
+                        const { top, height } = containerRef.current.getBoundingClientRect();
+                        const winHeight = window.innerHeight;
 
-            // Calculate progress: 0 when container starts stickiness, 1 when it ends
-            // Sticky behavior typically involves the parent being tall.
-            // The content is sticky for (height - winHeight) duration.
-            const scrollDist = height - winHeight;
-            const scrollTop = -top; // How far we've scrolled into the container
+                        const scrollDist = height - winHeight;
+                        const scrollTop = -top;
 
-            let p = scrollTop / scrollDist;
-            p = Math.min(Math.max(p, 0), 1);
-            setProgress(p);
+                        let p = scrollTop / scrollDist;
+                        p = Math.min(Math.max(p, 0), 1);
+                        setProgress(p);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
 
-        window.addEventListener('scroll', handleScroll);
-        // Ensure body allows scroll (reset from potential overrides)
+        window.addEventListener('scroll', handleScroll, { passive: true });
         document.body.style.overflowX = 'hidden';
         document.body.style.overflowY = 'auto';
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
-        }
+        };
     }, []);
 
     const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);

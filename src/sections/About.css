@@ -25,6 +25,7 @@
     align-items: center;
     background-color: #111111;
     z-index: 10;
+    touch-action: pan-y;
 }
 
 .about-track {
@@ -35,6 +36,7 @@
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     transform: translateZ(0);
+    touch-action: pan-y;
     /* Force GPU */
 }
 

@@ -8,24 +8,32 @@ const AboutProfile = () => {
     const [stickyOpacity, setStickyOpacity] = useState(1);
 
     useEffect(() => {
+        let ticking = false;
         const handleScroll = () => {
-            if (!eduRef.current) return;
-            const { top } = eduRef.current.getBoundingClientRect();
-            const winH = window.innerHeight;
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    if (eduRef.current) {
+                        const { top } = eduRef.current.getBoundingClientRect();
+                        const winH = window.innerHeight;
 
-            // Start fading when Education card top reaches 80% of viewport
-            // Complete fade (opacity 0) when it reaches 20% of viewport
-            const startFade = winH * 0.8;
-            const endFade = winH * 0.2;
-            const range = startFade - endFade;
+                        // Start fading when Education card top reaches 80% of viewport
+                        // Complete fade (opacity 0) when it reaches 20% of viewport
+                        const startFade = winH * 0.8;
+                        const endFade = winH * 0.2;
+                        const range = startFade - endFade;
 
-            let op = (top - endFade) / range;
-            op = Math.max(0, Math.min(1, op));
+                        let op = (top - endFade) / range;
+                        op = Math.max(0, Math.min(1, op));
 
-            setStickyOpacity(op);
+                        setStickyOpacity(op);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         handleScroll(); // Init
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
